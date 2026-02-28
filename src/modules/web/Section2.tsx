@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import {
   Sparkles,
   CheckSquare,
@@ -95,9 +95,22 @@ const FeatureCard = ({
 );
 
 const Section2 = () => {
+  const containerRef = React.useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"]
+  });
+
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.95]);
+  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0.7]);
   const BLUE_ORB: [string, string] = ["#CADCFC", "#A0B9D1"];
+
   return (
-    <div className="min-h-screen w-full bg-black overflow-hidden selection:bg-blue-500/30 dark relative">
+    <motion.div 
+      ref={containerRef}
+      style={{ scale, opacity }}
+      className="min-h-screen w-full bg-black overflow-hidden selection:bg-blue-500/30 dark relative z-0"
+    >
       <div className="absolute top-0 left-0 w-full h-full bg-[linear-gradient(to_right,#80808018_1px,transparent_1px),linear-gradient(to_bottom,#80808018_1px,transparent_1px)] bg-size-[36px_36px]" />
       <div className="absolute inset-0 z-0">
         <div className="absolute top-1/3 left-95 w-full max-w-[720px] h-[500px] bg-blue-500/30 blur-[160px] rounded-full pointer-events-none" />
@@ -123,7 +136,7 @@ const Section2 = () => {
         </header>
 
         {/* ───────── Orb + Cards Grid ───────── */}
-        <main className="relative w-full py-16 md:py-24">
+        <main className="relative w-full py-16 md:py-24 mx-auto">
           {/* SVG connector lines (absolute, behind cards) */}
           <svg
             className="absolute inset-0 w-full h-full pointer-events-none z-0"
@@ -367,7 +380,7 @@ const Section2 = () => {
           </div>
         </main>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
