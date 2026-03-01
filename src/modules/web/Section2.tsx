@@ -206,7 +206,7 @@ const Section2 = () => {
                     Task Lists
                   </h3>
                 </div>
-                <div className="space-y-2.5 bg-slate-200 p-2 rounded-lg">
+                <div className="space-y-2.5 bg-white/5 border border-white/10 p-3 rounded-xl backdrop-blur-md">
                   {[
                     {
                       text: "Auth Setup",
@@ -228,20 +228,20 @@ const Section2 = () => {
                       key={i}
                       className="flex items-center gap-2 text-xs group/task "
                     >
-                      <span className="text-black truncate flex-1 group-hover/task:text-gray-200 transition-colors">
+                      <span className="text-gray-300 truncate flex-1 group-hover/task:text-white transition-colors">
                         {t.text}
                       </span>
                       <span
                         className={`shrink-0 inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-semibold ${
                           t.done
-                            ? "bg-blue-500/20 text-blue-600"
-                            : "bg-red-500/10 text-red-600"
+                            ? "bg-blue-500/20 text-blue-400"
+                            : "bg-red-500/10 text-red-400 border border-red-500/20"
                         }`}
                       >
                         {t.done && <CheckSquare className="w-2.5 h-2.5" />}
                         {t.tag}
                       </span>
-                      <span className="text-[10px] tracking-tight text-amber-600">
+                      <span className="text-[10px] tracking-tight text-amber-500/80">
                         {t.done ? "" : "Agent running"}
                       </span>
                     </div>
@@ -275,13 +275,13 @@ const Section2 = () => {
                       <span className="text-white">Assigned to Rox</span>
                     </span>
                   </div>
-                  <div className="flex items-center justify-center gap-10">
-                    <Button size="sm" variant="outline" className="text-xs text-white">
-                      Assign to Rox
+                  <div className="flex items-center justify-between gap-3 pt-1">
+                    <Button size="sm" variant="outline" className="text-[10px] h-7 px-3 border-white/10 hover:bg-white/5 text-white">
+                      <Zap className="w-2.5 h-2.5 mr-1 text-blue-400" /> Assign to Rox
                     </Button>
 
-                    <Button size="sm" variant="destructive" className="text-[10px]">
-                      Ignore <LucideX className="w-2 h-2" />
+                    <Button size="sm" variant="ghost" className="text-[10px] h-7 px-3 text-gray-500 hover:text-red-400">
+                      Ignore <LucideX className="w-2 h-2 ml-1" />
                     </Button>
                   </div>
                 </div>
@@ -316,7 +316,7 @@ const Section2 = () => {
                       <Server className="w-3.5 h-3.5 text-blue-400" />
                     </div>
                     <h3 className="text-sm font-semibold text-white tracking-wide">
-                      Deployemnt Tracked
+                      Deployment Tracked
                     </h3>
                   </div>
                   <div className="flex items-center gap-1.5">
@@ -327,13 +327,13 @@ const Section2 = () => {
                   </div>
                 </div>
 
-                <div className="space-y-3 bg-slate-200 rounded-xl p-3 border border-white/5 font-mono text-[10px]">
+                <div className="space-y-3 bg-white/5 rounded-xl p-3 border border-white/10 font-mono text-[10px]">
                   <div className="flex items-center gap-2 text-blue-500">
                     <Terminal className="w-3 h-3" />
                     <span>wekraft ~ deploy --prod</span>
                   </div>
                   <div className="space-y-1">
-                    <div className="flex items-center justify-between text-black">
+                    <div className="flex items-center justify-between text-gray-300">
                       <span>Optimization</span>
                       <span className="text-emerald-600">99.2%</span>
                     </div>
@@ -358,8 +358,8 @@ const Section2 = () => {
               {/* Insights */}
               <FeatureCard delay={0.4}>
                 <div className="flex items-center gap-2 mb-4">
-                  <div className="w-7 h-7 rounded-lg bg-amber-500/15 flex items-center justify-center">
-                    <LucideAlertCircle className="w-3.5 h-3.5 text-red-500" />
+                  <div className="w-7 h-7 rounded-lg bg-blue-500/15 flex items-center justify-center">
+                    <Zap className="w-3.5 h-3.5 text-blue-400" />
                   </div>
                   <h3 className="text-sm font-semibold text-white tracking-wide">
                     Auto Assign Issues
