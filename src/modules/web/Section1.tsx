@@ -201,7 +201,7 @@ const Section1 = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="md:col-span-1 relative overflow-hidden rounded-[2.5rem] border border-white/5 border-b-white/40 bg-linear-to-b from-gray-800 to-gray-950 h-105 p-8 flex flex-col items-center justify-end text-center group"
+            className="md:col-span-1 relative overflow-hidden rounded-[2.5rem] bg-linear-to-b from-gray-800 to-gray-950 h-105 p-8 flex flex-col items-center justify-end text-center group"
           >
             <div className="absolute top-12 w-full flex justify-center perspective-[1000px]">
               <div className="w-68 bg-white border border-white/10 rounded-2xl p-3.5 shadow-2xl transition-all duration-500 group-hover:rotate-0 rotate-3">
@@ -307,7 +307,7 @@ const Section1 = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
-            className="md:col-span-1 relative overflow-hidden rounded-[2.5rem]  border border-white/5 border-b-white/40 bg-linear-to-b from-gray-800 to-gray-950 h-95 p-8 flex flex-col items-center text-center group"
+            className="md:col-span-1 relative overflow-hidden rounded-[2.5rem]  bg-linear-to-b from-gray-800 to-gray-950 h-95 p-8 flex flex-col items-center text-center group"
           >
             <div className="z-10 mb-8">
               <h2 className="text-xl font-semibold text-white mb-2 leading-tight">
@@ -448,7 +448,7 @@ const Section1 = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.4 }}
-            className="md:col-span-1 relative overflow-hidden rounded-[2.5rem]  border border-white/5 border-b-white/40 bg-linear-to-b from-gray-800 to-gray-950 h-95 p-8 flex flex-col items-center justify-end text-center group"
+            className="md:col-span-1 relative overflow-hidden rounded-[2.5rem] bg-linear-to-b from-gray-800 to-gray-950 h-95 p-8 flex flex-col items-center justify-end text-center group"
           >
             <div className="absolute inset-0 flex items-center justify-center -translate-y-10 group-hover:-translate-y-12 transition-transform duration-700">
               <div className="relative w-40 h-40">
@@ -475,7 +475,7 @@ const Section1 = () => {
           </motion.div>
 
           {/* Card 6: Audio experiences (Span 3 / Full Width) */}
-          <div className="md:col-span-3 relative overflow-hidden rounded-[2.5rem] border border-white/10 bg-linear-to-br from-sky-400 via-blue-500 to-blue-700 h-70 flex flex-col items-center group p-8">
+          <div className="md:col-span-3 relative overflow-hidden rounded-[2.5rem]  bg-linear-to-b from-gray-800 to-gray-950 h-70 flex flex-col items-center group p-8">
             {/* Floating Background Pills */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
               {/* Pink */}

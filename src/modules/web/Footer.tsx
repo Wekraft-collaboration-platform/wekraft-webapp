@@ -10,7 +10,6 @@ import Link from "next/link";
 const Footer = () => {
   return (
     <div className="h-screen w-full overflow-hidden bg-black relative flex flex-col items-center justify-between py-24">
-      {/* Background & Overlays */}
       <div className="absolute inset-0 bg-linear-to-b from-black via-transparent to-black/30 pointer-events-none z-10" />
       <Image
         src="/bg-footer.jpg"
@@ -19,8 +18,6 @@ const Footer = () => {
         className="object-cover opacity-40 select-none"
         priority
       />
-
-      {/* Main Content */}
       <div className="relative z-20 flex flex-col items-center text-center max-w-4xl px-6">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
@@ -38,7 +35,7 @@ const Footer = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="text-6xl font-pop font-semibold text-white leading-tight tracking-tight mb-12"
+          className="text-5xl font-pop font-semibold text-white leading-tight tracking-tight mb-12"
         >
           The Future of Web <br /> 
           <span className="bg-linear-to-r from-sky-400 to-blue-600 bg-clip-text text-transparent">
@@ -53,7 +50,7 @@ const Footer = () => {
            transition={{ duration: 0.7, delay: 0.4 }}
         >
           <Link href="/auth">
-            <Button size="lg" className="h-16 px-10 text-lg font-semibold rounded-full bg-white text-black hover:bg-white/90 hover:scale-105 transition-all duration-300 shadow-[0_0_40px_rgba(255,255,255,0.2)]">
+            <Button size="lg" className="h-9 px-6 text-sm font-semibold rounded-full bg-white text-black hover:bg-white/90 hover:scale-105 transition-all duration-300 shadow-[0_0_40px_rgba(255,255,255,0.2)]">
               Start Building Now <Rocket className="ml-2 w-6 h-6" />
             </Button>
           </Link>

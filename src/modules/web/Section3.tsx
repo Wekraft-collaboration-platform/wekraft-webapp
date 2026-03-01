@@ -39,7 +39,7 @@ const Section3 = () => {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-sm font-semibold mb-8"
           >
             <Sparkles className="w-4 h-4" />
-            <span>Built for scale</span>
+            <span>Craft Anything</span>
           </motion.div>
 
           <motion.h2
@@ -47,12 +47,13 @@ const Section3 = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-4xl  font-sans tracking-tight text-slate-900 mb-8 max-w-4xl"
+            className="text-4xl  font-sans tracking-tight text-slate-900 mb-4 max-w-4xl"
           >
-            Empowering the next generation of <br />
+          In WeKraft you can<br />
             <span className="font-semibold text-blue-600">
-              Global Enterprises
+              Craft Anything {" "}
             </span>
+            Faster
           </motion.h2>
 
           <motion.p
@@ -62,12 +63,11 @@ const Section3 = () => {
             transition={{ delay: 0.2 }}
             className="text-xl text-slate-500 max-w-2xl leading-relaxed"
           >
-            Transform your workflow with intelligent agents that think, plan,
+            Craft Products with intelligent agents that think, plan,
             and execute alongside your team.
           </motion.p>
         </div>
 
-        {/* Dynamic Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {[
             {
