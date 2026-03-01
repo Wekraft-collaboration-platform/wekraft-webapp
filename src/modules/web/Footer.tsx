@@ -11,7 +11,7 @@ const Footer = () => {
   return (
     <div className="h-screen w-full overflow-hidden bg-black relative flex flex-col items-center justify-between py-24">
       {/* Background & Overlays */}
-      <div className="absolute inset-0 bg-linear-to-b from-black via-transparent to-black pointer-events-none z-10" />
+      <div className="absolute inset-0 bg-linear-to-b from-black via-transparent to-black/30 pointer-events-none z-10" />
       <Image
         src="/bg-footer.jpg"
         alt="Footer Background"
@@ -29,8 +29,8 @@ const Footer = () => {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="flex items-center gap-4 mb-8"
         >
-          <Image src="/logo.svg" alt="Wekraft Logo" width={80} height={80} className="drop-shadow-2xl" />
-          <span className="text-white font-pop font-bold text-6xl tracking-tighter">Wekraft</span>
+          <Image src="/logo.svg" alt="Wekraft Logo" width={50} height={50} className="drop-shadow-2xl" />
+          <span className="text-white font-pop font-bold text-4xl tracking-tighter">Wekraft</span>
         </motion.div>
 
         <motion.h2
@@ -38,10 +38,10 @@ const Footer = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="text-5xl md:text-7xl font-pop font-extrabold text-white leading-tight tracking-tight mb-12"
+          className="text-6xl font-pop font-semibold text-white leading-tight tracking-tight mb-12"
         >
           The Future of Web <br /> 
-          <span className="bg-linear-to-r from-blue-400 to-indigo-600 bg-clip-text text-transparent">
+          <span className="bg-linear-to-r from-sky-400 to-blue-600 bg-clip-text text-transparent">
             Crafted Together.
           </span>
         </motion.h2>
