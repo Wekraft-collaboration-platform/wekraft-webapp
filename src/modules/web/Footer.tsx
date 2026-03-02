@@ -10,7 +10,7 @@ import Link from "next/link";
 const Footer = () => {
   return (
     <div className="h-screen w-full overflow-hidden bg-black relative flex flex-col items-center justify-between py-24">
-      <div className="absolute inset-0 bg-linear-to-b from-black via-transparent to-black/30 pointer-events-none z-10" />
+      <div className="absolute inset-0 bg-linear-to-b from-black via-transparent to-transparent pointer-events-none z-10" />
       <Image
         src="/bg-footer.jpg"
         alt="Footer Background"
@@ -70,7 +70,7 @@ const Footer = () => {
           <Link href="https://github.com/wekraft" className="hover:text-white transition-colors flex items-center gap-2">
             <Github className="w-4 h-4" /> Star on GitHub
           </Link>
-          <Link href="/support" className="hover:text-white transition-colors flex items-center gap-2 text-pink-500/80">
+          <Link href="/support" className="hover:text-white transition-colors flex items-center gap-2 text-blue-600">
             <Heart className="w-4 h-4" /> Support Creator
           </Link>
         </div>

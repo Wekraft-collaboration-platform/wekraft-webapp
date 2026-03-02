@@ -107,7 +107,7 @@ const Section3 = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ delay: 0.1 * idx, duration: 0.5 }}
-              className="p-6 rounded-[2.5rem] bg-slate-50/60 border border-slate-100/50 hover:bg-white hover:border-blue-200 transition-all duration-300 group hover:shadow-blue-500/10"
+              className="p-6 rounded-[2.5rem] bg-slate-50/30 border border-slate-100/30 hover:bg-white shadow transition-all duration-300 group"
             >
               <div className="w-11 h-11 rounded-2xl bg-white shadow-md flex items-center justify-center text-blue-600 mb-8 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
                 {feature.icon}
