@@ -303,7 +303,7 @@ const Section1 = () => {
                 craft faster
               </p>
             </div>
-            <div className="absolute inset-0 w-full h-full flex items-end justify-center top-1/2 opacity-70">
+            <div className="absolute inset-0 w-full h-full flex items-end justify-center top-1/2 opacity-80">
               <Globe />
             </div>
           </motion.div>
