@@ -8,6 +8,7 @@ import { Spotlight } from "@/components/ui/spotlight";
 import { ArrowRightIcon, LucideRocket, LucideTrendingUp } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { HeroVideoDialog } from "@/components/ui/hero-video-dialog";
 
 const FloatingCursor = ({
   name,
@@ -154,15 +155,14 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className="mt-20 w-full max-w-[80%] mx-auto">
-          <div className="-skew-x-6 border hover:scale-110 cursor-grab hover:skew-0 transition-all duration-500 ease-in-out border-black/50 rounded-2xl overflow-hidden">
-            <Image
-              src="/hero-img-1.png"
-              alt="background"
-              className="size-full block "
-              width="1000"
-              height="1000"
+        <div className="mt-20 w-full max-w-[84%] mx-auto">
+          <div className="relative">
+            <HeroVideoDialog
+              videoSrc="https://www.youtube.com/embed/VIDEO_ID"
+              thumbnailSrc="/hero-img-1.png"
+              thumbnailAlt="Video thumbnail"
             />
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-linear-to-t from-black via-black/60 to-transparent" />
           </div>
         </div>
       </main>

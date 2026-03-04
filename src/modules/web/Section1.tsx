@@ -31,13 +31,12 @@ export const fadeUp = {
 const Section1 = () => {
   return (
     <section className="relative w-full bg-black overflow-hidden selection:bg-blue-500/30">
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:64px_64px]" />
-      
+     
       <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-black to-transparent z-10" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-32 md:py-40">
         <div className="max-w-3xl mb-24">
-          <motion.div {...fadeUp} className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/[0.03] text-[13px] text-neutral-400 font-medium mb-6 backdrop-blur-sm">
+          <motion.div {...fadeUp} className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-blue-500/30 bg-blue-500/15 text-[13px] text-neutral-400 font-medium mb-6 backdrop-blur-sm">
             <div className="w-1.5 h-1.5 rounded-full bg-blue-500" />
             Purpose-built for engineering teams
           </motion.div>
@@ -45,11 +44,11 @@ const Section1 = () => {
           <motion.h2
             {...fadeUp}
             transition={{ ...fadeUp.transition, delay: 0.1 }}
-            className="text-[2.75rem] md:text-[3.5rem] leading-[1.1] font-semibold tracking-[-0.03em] text-white mb-6"
+            className="text-5xl leading-[1.1] font-semibold tracking-[-0.03em] text-white mb-6"
           >
             Build with clarity.
             <br />
-            <span className="bg-gradient-to-r from-neutral-400 to-neutral-600 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-neutral-400 to-neutral-600 bg-clip-text text-transparent">
               Ship with confidence.
             </span>
           </motion.h2>
@@ -71,9 +70,8 @@ const Section1 = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="md:col-span-4 group relative overflow-hidden rounded-2xl border border-white/[0.06] bg-gradient-to-b from-neutral-900/80 to-neutral-950 p-8 md:p-10 min-h-[420px] flex flex-col"
+            className="md:col-span-4 group relative overflow-hidden rounded-2xl border border-white/[0.06] bg-linear-to-b from-white/10 to-neutral-950 p-8 md:p-10 min-h-[420px] flex flex-col"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
             
             <div className="relative z-10 flex-1 flex flex-col">
               <div className="flex items-center gap-3 mb-6">
@@ -91,7 +89,7 @@ const Section1 = () => {
               </p>
 
               <div className="mt-auto relative flex-1 min-h-[200px]">
-                <div className="absolute inset-0 rounded-xl border border-white/[0.06] bg-black/60 backdrop-blur-sm overflow-hidden">
+                <div className="absolute inset-0 rounded-xl border border-white/[0.06] bg-gray-900 backdrop-blur-sm overflow-hidden">
                   <div className="flex items-center justify-between px-4 py-3 border-b border-white/[0.04]">
                     <div className="flex items-center gap-2">
                       <div className="flex gap-1.5">
@@ -162,14 +160,14 @@ const Section1 = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="md:col-span-2 group relative overflow-hidden rounded-2xl border border-white/[0.06] bg-gradient-to-b from-neutral-900/80 to-neutral-950 p-8 min-h-[420px] flex flex-col"
+            className="md:col-span-2 group relative overflow-hidden rounded-2xl border border-white/[0.06] bg-linear-to-b from-white/10 to-neutral-950 p-8 min-h-[420px] flex flex-col"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-violet-500/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+            <div className="absolute inset-0 bg-linear-to-br from-blue-500/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
             <div className="relative z-10 flex-1 flex flex-col">
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-8 h-8 rounded-lg bg-violet-500/10 flex items-center justify-center border border-violet-500/20">
-                  <Zap className="w-4 h-4 text-violet-400" />
+                <div className="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center border border-blue-500/20">
+                  <Zap className="w-4 h-4 text-blue-400" />
                 </div>
                 <span className="text-xs font-semibold text-neutral-500 uppercase tracking-widest">Automation</span>
               </div>
@@ -181,11 +179,11 @@ const Section1 = () => {
                 Offload repetitive tasks to our AI-first infrastructure. Ship 3x faster.
               </p>
 
-              <div className="mt-auto space-y-3">
+              <div className="mt-auto space-y-3 bg-neutral-200 py-8 px-3 rounded-lg">
                 {[
-                  { label: "AI Code Review", status: "Done", statusColor: "text-emerald-400", bgColor: "bg-emerald-500/10", dotColor: "bg-emerald-500" },
-                  { label: "Auto Testing", status: "Running", statusColor: "text-blue-400", bgColor: "bg-blue-500/10", dotColor: "bg-blue-500" },
-                  { label: "Deploy Prod", status: "Queued", statusColor: "text-neutral-500", bgColor: "bg-white/[0.03]", dotColor: "bg-neutral-600" },
+                  { label: "AI Code Review", status: "Done", statusColor: "text-white", bgColor: "bg-emerald-500", dotColor: "bg-white" },
+                  { label: "Auto Testing", status: "Running", statusColor: "text-white", bgColor: "bg-blue-500", dotColor: "bg-white" },
+                  { label: "Deploy Prod", status: "Queued", statusColor: "text-black", bgColor: "bg-white", dotColor: "bg-black" },
                 ].map((item, i) => (
                   <motion.div
                     key={i}
@@ -197,9 +195,9 @@ const Section1 = () => {
                   >
                     <div className="flex items-center gap-2.5">
                       <div className={`w-1.5 h-1.5 rounded-full ${item.dotColor} ${item.status === "Running" ? "animate-pulse" : ""}`} />
-                      <span className="text-xs text-neutral-300 font-medium">{item.label}</span>
+                      <span className={`text-xs font-medium ${item.statusColor}`}>{item.label}</span>
                     </div>
-                    <span className={`text-[10px] font-semibold uppercase tracking-wider ${item.statusColor}`}>
+                    <span className={`text-[10px] font-semibold uppercase tracking-wider  ${item.statusColor}`}>
                       {item.status}
                     </span>
                   </motion.div>
@@ -213,23 +211,23 @@ const Section1 = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="md:col-span-2 group relative overflow-hidden rounded-2xl border border-white/[0.06] bg-gradient-to-b from-neutral-900/80 to-neutral-950 p-8 min-h-[380px] flex flex-col"
+            className="md:col-span-2 group relative overflow-hidden rounded-2xl border border-white/[0.06] bg-linear-to-b from-white/10 to-neutral-950 p-8 min-h-[380px] flex flex-col"
           >
             <div className="relative z-10">
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-8 h-8 rounded-lg bg-cyan-500/10 flex items-center justify-center border border-cyan-500/20">
-                  <Sparkles className="w-4 h-4 text-cyan-400" />
+                <div className="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center border border-blue-500/20">
+                  <Users className="w-4 h-4 text-blue-500" />
                 </div>
-                <span className="text-xs font-semibold text-neutral-500 uppercase tracking-widest">Global</span>
+                <span className="text-xs font-semibold text-neutral-500 uppercase tracking-widest">Team Across Globe</span>
               </div>
               <h3 className="text-xl font-semibold text-white tracking-tight mb-2">
-                Edge-first infrastructure
+                Find & Team Up Globally
               </h3>
               <p className="text-neutral-500 text-sm leading-relaxed">
-                Deploy to 30+ regions with sub-50ms latency worldwide.
+                Team up with like minded people from all over the world and craft faster
               </p>
             </div>
-            <div className="absolute inset-0 w-full h-full flex items-end justify-center translate-y-16 opacity-80">
+            <div className="absolute inset-0 w-full h-full flex items-end justify-center top-1/2 opacity-70">
               <Globe />
             </div>
           </motion.div>
@@ -239,14 +237,14 @@ const Section1 = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="md:col-span-2 group relative overflow-hidden rounded-2xl border border-white/[0.06] bg-gradient-to-b from-neutral-900/80 to-neutral-950 p-8 min-h-[380px] flex flex-col"
+            className="md:col-span-2 group relative overflow-hidden rounded-2xl border border-white/[0.06] bg-linear-to-b from-white/10 to-neutral-950 p-8 min-h-[380px] flex flex-col"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
             
             <div className="relative z-10 flex-1 flex flex-col">
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center border border-emerald-500/20">
-                  <BarChart3 className="w-4 h-4 text-emerald-400" />
+                <div className="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center border border-blue-500/20">
+                  <BarChart3 className="w-4 h-4 text-blue-400" />
                 </div>
                 <span className="text-xs font-semibold text-neutral-500 uppercase tracking-widest">Analytics</span>
               </div>
