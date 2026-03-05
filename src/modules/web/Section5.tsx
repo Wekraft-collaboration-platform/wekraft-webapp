@@ -160,7 +160,7 @@ const features = [
 /* ─── Main Section ─── */
 const Section5 = () => {
   return (
-    <section className="relative w-full bg-black overflow-hidden py-24 md:py-32">
+    <section className="relative w-full bg-black overflow-hidden pb-20">
       {/* Subtle ambient glows */}
       <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-blue-600/5 blur-[160px] rounded-full pointer-events-none" />
 

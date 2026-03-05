@@ -19,9 +19,8 @@ import {
 import { Orb } from "@/components/ui/Orb";
 import { Button } from "@/components/ui/button";
 
-/* ───────────────── animated connector line ───────────────── */
+
 const ConnectorLine = ({ d, delay = 0 }: { d: string; delay?: number }) => {
-  // Extract starting coordinates for the dot (M x y)
   const coords = d.match(/M\s+([\d.]+)\s+([\d.]+)/);
   const startX = coords ? coords[1] : "0";
   const startY = coords ? coords[2] : "0";
@@ -39,7 +38,6 @@ const ConnectorLine = ({ d, delay = 0 }: { d: string; delay?: number }) => {
         viewport={{ once: true }}
         transition={{ duration: 1.5, delay, ease: "easeInOut" }}
       />
-      {/* Moving pulse focus */}
       <motion.path
         d={d}
         fill="none"
@@ -60,7 +58,6 @@ const ConnectorLine = ({ d, delay = 0 }: { d: string; delay?: number }) => {
           ease: "easeInOut",
         }}
       />
-      {/* Endpoint Dot at the card junction */}
       <motion.circle
         cx={startX}
         cy={startY}
@@ -76,7 +73,6 @@ const ConnectorLine = ({ d, delay = 0 }: { d: string; delay?: number }) => {
   );
 };
 
-/* ───────────────── feature card wrapper ───────────────── */
 const FeatureCard = ({
   children,
   className = "",
@@ -91,7 +87,7 @@ const FeatureCard = ({
     whileInView={{ opacity: 1, y: 0, scale: 1 }}
     viewport={{ once: true }}
     transition={{ duration: 0.6, delay, ease: "easeOut" }}
-    className={`max-w-[300px] w-full rounded-2xl border border-white/8 bg-linear-to-br from-white/6 to-white/2 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.4)] p-4 ${className}`}
+    className={`max-w-[300px] w-full rounded-2xl bg-linear-to-br from-gray-800 to-gray-950 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.4)] p-4 ${className}`}
   >
     {children}
   </motion.div>
@@ -114,12 +110,11 @@ const Section2 = () => {
       style={{ scale, opacity }}
       className="min-h-screen w-full bg-black overflow-hidden selection:bg-blue-500/30 dark relative z-0"
     >
-      <div className="absolute top-0 left-0 w-full h-full bg-[linear-gradient(to_right,#80808018_1px,transparent_1px),linear-gradient(to_bottom,#80808018_1px,transparent_1px)] bg-size-[36px_36px]" />
+      <div className="absolute top-0 left-0 w-full h-full bg-[linear-gradient(to_right,#80808016_1px,transparent_1px),linear-gradient(to_bottom,#80808016_1px,transparent_1px)] bg-size-[36px_36px]" />
       <div className="absolute inset-0 z-0">
-        <div className="absolute top-1/3 left-95 w-full max-w-[720px] h-[500px] bg-blue-500/30 blur-[160px] rounded-full pointer-events-none" />
+        <div className="absolute top-1/3 left-1/3 w-full max-w-[520px] h-[500px] bg-blue-500/30 blur-[160px] rounded-full pointer-events-none" />
       </div>
       <div className="h-full flex flex-col lg:p-20 md:p-12 p-6 max-w-7xl mx-auto">
-        {/* Header Section */}
         <header className="w-full max-w-6xl mb-12 mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -138,9 +133,7 @@ const Section2 = () => {
           </h1>
         </header>
 
-        {/* ───────── Orb + Cards Grid ───────── */}
         <main className="relative w-full py-16 md:py-24 mx-auto">
-          {/* SVG connector lines (absolute, behind cards) */}
           <svg
             className="absolute inset-0 w-full h-full pointer-events-none z-0"
             viewBox="0 0 1000 600"
@@ -168,35 +161,26 @@ const Section2 = () => {
               </filter>
             </defs>
             <g filter="url(#glow)">
-              {/* Top-left: M 220 180 (card right) -> horizontal -> curve down -> vertical -> curve right -> Orb */}
               <ConnectorLine
                 d="M 240 160 H 320 Q 360 160, 360 210 V 260 Q 360 300, 420 300 H 460"
                 delay={0.2}
               />
-              {/* Bottom-left: M 220 420 (card right) -> horizontal -> curve up -> vertical -> curve right -> Orb */}
               <ConnectorLine
                 d="M 240 440 H 320 Q 360 440, 360 390 V 340 Q 360 300, 420 300 H 460"
                 delay={0.4}
               />
-
-              {/* Top-right: M 780 180 (card left) -> horizontal -> curve down -> vertical -> curve left -> Orb */}
               <ConnectorLine
                 d="M 760 160 H 680 Q 640 160, 640 210 V 260 Q 640 300, 580 300 H 540"
                 delay={0.6}
               />
-              {/* Bottom-right: M 780 420 (card left) -> horizontal -> curve up -> vertical -> curve left -> Orb */}
               <ConnectorLine
                 d="M 760 440 H 680 Q 640 440, 640 390 V 340 Q 640 300, 580 300 H 540"
                 delay={0.8}
               />
             </g>
           </svg>
-
-          {/* Layout grid: left cards / orb / right cards */}
           <div className="relative z-10 grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-x-32 gap-y-12 items-center max-w-7xl mx-auto px-4">
-            {/* ─── Left column ─── */}
             <div className="flex flex-col gap-12">
-              {/* Task Lists */}
               <FeatureCard delay={0.1}>
                 <div className="flex items-center gap-2 mb-4">
                   <div className="w-7 h-7 rounded-lg bg-blue-500/15 flex items-center justify-center">
@@ -249,7 +233,6 @@ const Section2 = () => {
                 </div>
               </FeatureCard>
 
-              {/* Workflows */}
               <FeatureCard delay={0.3}>
                 <div className="flex items-center gap-2 mb-4">
                   <div className="w-7 h-7 rounded-lg bg-emerald-500/15 flex items-center justify-center">
@@ -288,10 +271,8 @@ const Section2 = () => {
               </FeatureCard>
             </div>
 
-            {/* ─── Center: Orb ─── */}
             <div className="flex items-center justify-center">
               <div className="relative">
-                {/* Glow behind orb */}
                 <div className="absolute -inset-12 bg-blue-500/10 rounded-full blur-3xl animate-pulse pointer-events-none" />
                 <div className="bg-gray-800 relative h-40 w-40  rounded-full p-1.5 shadow-[inset_0_2px_8px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_8px_rgba(0,0,0,0.5)]">
                   <div className="bg-black h-full w-full overflow-hidden rounded-full shadow-[inset_0_0_12px_rgba(0,0,0,0.05)] dark:shadow-[inset_0_0_12px_rgba(0,0,0,0.3)]">
@@ -306,9 +287,7 @@ const Section2 = () => {
               </div>
             </div>
 
-            {/* ─── Right column ─── */}
             <div className="flex flex-col gap-12">
-              {/* Cloud Execution */}
               <FeatureCard delay={0.2}>
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-2">
@@ -355,7 +334,6 @@ const Section2 = () => {
                 </div>
               </FeatureCard>
 
-              {/* Insights */}
               <FeatureCard delay={0.4}>
                 <div className="flex items-center gap-2 mb-4">
                   <div className="w-7 h-7 rounded-lg bg-blue-500/15 flex items-center justify-center">
