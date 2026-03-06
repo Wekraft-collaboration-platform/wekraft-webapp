@@ -112,7 +112,7 @@ const Section2 = () => {
     >
       <div className="absolute top-0 left-0 w-full h-full bg-[linear-gradient(to_right,#80808016_1px,transparent_1px),linear-gradient(to_bottom,#80808016_1px,transparent_1px)] bg-size-[36px_36px]" />
       <div className="absolute inset-0 z-0">
-        <div className="absolute top-1/3 left-1/3 w-full max-w-[520px] h-[500px] bg-blue-500/30 blur-[160px] rounded-full pointer-events-none" />
+        <div className="absolute top-1/3 left-1/3 w-full max-w-[500px] h-[500px] bg-blue-500/20 blur-[160px] rounded-full pointer-events-none" />
       </div>
       <div className="h-full flex flex-col lg:p-20 md:p-12 p-6 max-w-7xl mx-auto">
         <header className="w-full max-w-6xl mb-12 mx-auto text-center">
@@ -274,7 +274,7 @@ const Section2 = () => {
             <div className="flex items-center justify-center">
               <div className="relative">
                 <div className="absolute -inset-12 bg-blue-500/10 rounded-full blur-3xl animate-pulse pointer-events-none" />
-                <div className="bg-gray-800 relative h-40 w-40  rounded-full p-1.5 shadow-[inset_0_2px_8px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_8px_rgba(0,0,0,0.5)]">
+                <div className="bg-gray-800 relative h-32 w-32  rounded-full p-1.5 shadow-[inset_0_2px_8px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_8px_rgba(0,0,0,0.5)]">
                   <div className="bg-black h-full w-full overflow-hidden rounded-full shadow-[inset_0_0_12px_rgba(0,0,0,0.05)] dark:shadow-[inset_0_0_12px_rgba(0,0,0,0.3)]">
                     <Orb
                       colors={BLUE_ORB}
