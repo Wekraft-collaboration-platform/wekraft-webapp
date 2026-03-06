@@ -96,157 +96,221 @@ const SkillMatchingUI = () => (
   </div>
 );
 
+// ── col config: 8 columns, "Today" sits at col index 4 (0-based) ──
+const COLS = ["S 13", "M 14", "T 15", "W 16", "T 17", "F 18", "S 19", "S 20"];
+const TODAY_COL = 3; // W 16
+
+const tasks = [
+  {
+    id: 1,
+    name: "UX Research",
+    tag: "UX Design",
+    days: "4 Days",
+    colStart: 0,
+    colSpan: 3,
+    status: "done",
+    accent: "#22c55e",
+    avatars: ["https://i.pravatar.cc/28?img=11", "https://i.pravatar.cc/28?img=47"],
+  },
+  {
+    id: 2,
+    name: "Wireframe",
+    tag: "UI Design",
+    days: "4 Days",
+    colStart: 3,
+    colSpan: 3,
+    status: "active",
+    accent: "#3b82f6",
+    avatars: ["https://i.pravatar.cc/28?img=12", "https://i.pravatar.cc/28?img=5"],
+  },
+  {
+    id: 3,
+    name: "Core Implementation",
+    tag: "Engineering",
+    days: "6 Days",
+    colStart: 1,
+    colSpan: 5,
+    status: "done",
+    accent: "#22c55e",
+    avatars: ["https://i.pravatar.cc/28?img=8"],
+  },
+  {
+    id: 4,
+    name: "Design System",
+    tag: "UI Design",
+    days: "3 Days",
+    colStart: 5,
+    colSpan: 3,
+    status: "pending",
+    accent: "#6b7280",
+    avatars: ["https://i.pravatar.cc/28?img=14"],
+  },
+];
+
 const TimelineTrackingUI = () => {
-  const milestones = [
-    { id: 1, name: "API Design", status: "completed", week: 1, width: 2 },
-    { id: 2, name: "Core Implementation", status: "completed", week: 2, width: 3 },
-    { id: 3, name: "Code Review", status: "in-progress", week: 4, width: 2 },
-    { id: 4, name: "Testing Phase", status: "pending", week: 5, width: 3 },
-    { id: 5, name: "Deploy", status: "pending", week: 7, width: 1 },
-  ];
-
-  const weeks = ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "W8"];
-
   return (
-    <div className="w-full h-full flex items-center justify-center mt-10 ">
-      <div className="w-full max-w-4xl mt-10 bg-white/5 px-10 py-6 rounded-3xl ">
-        {/* Header Stats */}
-        <div className="flex items-center gap-10 mb-6">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center">
-              <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-            </div>
-            <div>
-              <div className="text-[10px] text-neutral-500 uppercase tracking-wider">Completed</div>
-              <div className="text-sm font-semibold text-white">2 of 5</div>
-            </div>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-amber-500/10 flex items-center justify-center">
-              <Clock className="w-4 h-4 text-amber-400" />
-            </div>
-            <div>
-              <div className="text-[10px] text-neutral-500 uppercase tracking-wider">On Track</div>
-              <div className="text-sm font-semibold text-white">Ship by Mar 15</div>
-            </div>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-indigo-500/10 flex items-center justify-center">
-              <Sparkles className="w-4 h-4 text-indigo-400" />
-            </div>
-            <div>
-              <div className="text-[10px] text-neutral-500 uppercase tracking-wider">AI Confidence</div>
-              <div className="text-sm font-semibold text-white">94%</div>
-            </div>
-          </div>
-        </div>
-
-        {/* Timeline */}
-        <div className="relative">
-          {/* Week labels */}
-          <div className="flex mb-3">
-            {weeks.map((week, i) => (
-              <div key={week} className="flex-1 text-center">
-                <span className="text-[10px] text-neutral-600 font-mono">{week}</span>
-              </div>
-            ))}
-          </div>
-
-          {/* Grid lines */}
-          <div className="absolute inset-0 flex pt-6">
-            {weeks.map((_, i) => (
-              <div key={i} className="flex-1 border-l border-white/[0.03] first:border-l-0" />
-            ))}
-          </div>
-
-          {/* Milestones */}
-          <div className="space-y-3 relative">
-            {milestones.map((milestone, i) => (
-              <motion.div
-                key={milestone.id}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 + i * 0.1 }}
-                className="flex items-center gap-4"
-              >
-                <div className="w-28 shrink-0">
-                  <span className="text-[11px] text-neutral-400 font-medium">{milestone.name}</span>
-                </div>
-                <div className="flex-1 h-8 relative">
-                  <motion.div
-                    initial={{ width: 0 }}
-                    whileInView={{ width: `${(milestone.width / weeks.length) * 100}%` }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.4 + i * 0.1 }}
-                    style={{ marginLeft: `${((milestone.week - 1) / weeks.length) * 100}%` }}
-                    className={cn(
-                      "h-full rounded-md flex items-center px-2.5 gap-1.5",
-                      milestone.status === "completed" && "bg-emerald-500/15 border border-emerald-500/20",
-                      milestone.status === "in-progress" && "bg-amber-500/15 border border-amber-500/20",
-                      milestone.status === "pending" && "bg-white/[0.04] border border-white/[0.06]"
-                    )}
-                  >
-                    {milestone.status === "completed" && (
-                      <CheckCircle2 className="w-3 h-3 text-emerald-400 shrink-0" />
-                    )}
-                    {milestone.status === "in-progress" && (
-                      <motion.div
-                        animate={{ rotate: 360 }}
-                        transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                      >
-                        <Clock className="w-3 h-3 text-amber-400 shrink-0" />
-                      </motion.div>
-                    )}
-                    {milestone.status === "pending" && (
-                      <div className="w-3 h-3 rounded-full border border-neutral-600 shrink-0" />
-                    )}
-                    <span className={cn(
-                      "text-[10px] font-medium truncate",
-                      milestone.status === "completed" && "text-emerald-400",
-                      milestone.status === "in-progress" && "text-amber-400",
-                      milestone.status === "pending" && "text-neutral-500"
-                    )}>
-                      {milestone.status === "completed" ? "Done" : milestone.status === "in-progress" ? "Active" : "Queued"}
-                    </span>
-                  </motion.div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Current time indicator */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.8 }}
-            className="absolute top-6 bottom-0 w-px bg-gradient-to-b from-violet-500 to-transparent"
-            style={{ left: "45%" }}
+    <div className="w-full px-8 md:px-10 pb-8 pt-2">
+      {/* ── App chrome: tab bar ── */}
+      <div className="flex items-center gap-1 mb-4 border-b border-white/[0.06] pb-3">
+        {["Board", "Timeline", "List", "Table"].map((tab) => (
+          <button
+            key={tab}
+            className={cn(
+              "px-3 py-1 rounded-md text-[11px] font-medium transition-colors",
+              tab === "Timeline"
+                ? "text-white border-b-2 border-blue-500 rounded-none pb-2.5 -mb-px"
+                : "text-neutral-500 hover:text-neutral-300"
+            )}
           >
-            <div className="absolute -top-1 -translate-x-1/2">
-              <div className="w-2 h-2 rounded-full bg-violet-500 shadow-[0_0_8px_rgba(139,92,246,0.5)]" />
+            {tab === "Timeline" && <span className="mr-1.5 opacity-60">≡</span>}
+            {tab}
+          </button>
+        ))}
+      </div>
+
+      {/* ── Column header row ── */}
+      <div className="flex">
+        {/* row label gutter */}
+        <div className="w-36 shrink-0" />
+        {/* day columns */}
+        <div className="flex-1 grid gap-0" style={{ gridTemplateColumns: `repeat(${COLS.length}, 1fr)` }}>
+          {COLS.map((col, i) => (
+            <div key={col} className={cn(
+              "text-center py-1",
+              i === TODAY_COL ? "relative" : ""
+            )}>
+              <span className={cn(
+                "text-[10px] font-mono",
+                i === TODAY_COL ? "text-blue-400 font-semibold" : "text-neutral-600"
+              )}>{col}</span>
             </div>
-            <div className="absolute -top-6 -translate-x-1/2 whitespace-nowrap">
-              <span className="text-[9px] text-violet-400 font-medium">Today</span>
-            </div>
-          </motion.div>
+          ))}
+        </div>
+      </div>
+
+      {/* ── Timeline body ── */}
+      <div className="relative">
+        {/* vertical grid lines */}
+        <div className="absolute inset-0 flex pointer-events-none" style={{ left: "144px" }}>
+          {COLS.map((_, i) => (
+            <div
+              key={i}
+              className={cn(
+                "flex-1 border-l",
+                i === TODAY_COL ? "border-blue-500/40" : "border-white/[0.04]"
+              )}
+            />
+          ))}
         </div>
 
-        {/* Bottom insight */}
+        {/* Today line + label */}
         <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.9 }}
-          className="mt-6 flex items-center gap-2 px-3 py-2 rounded-lg bg-violet-500/[0.04] border border-violet-500/10"
+          transition={{ delay: 0.6 }}
+          className="absolute top-0 bottom-0 z-20 pointer-events-none"
+          style={{ left: `calc(144px + ${(TODAY_COL / COLS.length) * 100}% - 0.5px)` }}
         >
-          <Target className="w-3.5 h-3.5 text-violet-400 shrink-0" />
-          <span className="text-[11px] text-neutral-400">
-            <span className="text-violet-400 font-medium">WeKraft Agent:</span> On track to ship 2 days early. No blockers detected.
-          </span>
+          <div className="absolute -top-5 -translate-x-1/2 flex flex-col items-center">
+            <span className="text-[9px] font-semibold text-blue-400 mb-0.5">Today</span>
+            <div className="w-2 h-2 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.8)]" />
+          </div>
+          <div className="w-px h-full bg-blue-500/50" />
         </motion.div>
+
+        {/* Task rows */}
+        <div className="space-y-2 mt-1">
+          {tasks.map((task, i) => (
+            <motion.div
+              key={task.id}
+              initial={{ opacity: 0, y: 8 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.15 + i * 0.1 }}
+              className="flex items-center h-11"
+            >
+              {/* Row label */}
+              <div className="w-36 shrink-0 pr-4">
+                <span className="text-[11px] text-neutral-400 font-medium">{task.name}</span>
+              </div>
+
+              {/* Grid area */}
+              <div
+                className="flex-1 relative h-full"
+                style={{ display: "grid", gridTemplateColumns: `repeat(${COLS.length}, 1fr)` }}
+              >
+                {/* Task bar */}
+                <motion.div
+                  initial={{ scaleX: 0, opacity: 0 }}
+                  whileInView={{ scaleX: 1, opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.3 + i * 0.1, ease: "easeOut" }}
+                  style={{
+                    gridColumnStart: task.colStart + 1,
+                    gridColumnEnd: task.colStart + task.colSpan + 1,
+                    transformOrigin: "left center",
+                  }}
+                  className={cn(
+                    "rounded-lg border flex items-center px-3 gap-2 h-full",
+                    task.status === "done" && "bg-emerald-500/10 border-emerald-500/20",
+                    task.status === "active" && "bg-amber-500/10 border-amber-500/20",
+                    task.status === "pending" && "bg-white/[0.03] border-white/[0.07]"
+                  )}
+                >
+                  {/* Left accent */}
+                  <div
+                    className="w-0.5 h-5 rounded-full shrink-0"
+                    style={{ backgroundColor: task.accent }}
+                  />
+                  <div className="flex-1 min-w-0">
+                    <div className={cn(
+                      "text-[11px] font-semibold truncate",
+                      task.status === "done" && "text-emerald-300",
+                      task.status === "active" && "text-amber-300",
+                      task.status === "pending" && "text-neutral-500"
+                    )}>
+                      {task.name}
+                    </div>
+                    <div className="flex items-center gap-1.5 mt-0.5">
+                      <div
+                        className="w-1 h-1 rounded-full"
+                        style={{ backgroundColor: task.accent }}
+                      />
+                      <span className="text-[9px] text-neutral-600">{task.tag}</span>
+                      <span className="text-[9px] text-neutral-700">· {task.days}</span>
+                    </div>
+                  </div>
+                  {/* Avatars */}
+                  <div className="flex -space-x-1.5 shrink-0">
+                    {task.avatars.map((src, j) => (
+                      <img
+                        key={j}
+                        src={src}
+                        className="w-5 h-5 rounded-full border border-black/60 object-cover"
+                      />
+                    ))}
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
+
+      {/* ── Agent insight bar ── */}
+      <motion.div
+        initial={{ opacity: 0, y: 6 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.8 }}
+        className="mt-5 flex items-center gap-2 px-3 py-2 rounded-lg bg-blue-500/[0.05] border border-blue-500/10"
+      >
+        <Target className="w-3 h-3 text-blue-400 shrink-0" />
+        <span className="text-[10px] text-neutral-400">
+          <span className="text-blue-400 font-semibold">WeKraft Agent:</span> On track to ship 2 days early. No blockers detected.
+        </span>
+      </motion.div>
     </div>
   );
 };
@@ -409,7 +473,7 @@ const NewSection4 = () => {
                 From code push to production — WeKraft orchestrates every step. Every task / Issues / Features are tracked and assured that the project dont slips the deadline
               </p>
             </div>
-            <div className="h-[280px] overflow-hidden ">
+            <div className="h-[340px] overflow-hidden">
               <TimelineTrackingUI />
             </div>
           </motion.div>

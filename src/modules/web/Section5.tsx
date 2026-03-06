@@ -161,9 +161,6 @@ const features = [
 const Section5 = () => {
   return (
     <section className="relative w-full bg-black overflow-hidden pb-20">
-      {/* Subtle ambient glows */}
-      <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-blue-600/5 blur-[160px] rounded-full pointer-events-none" />
-
       {/* ── Header ── */}
       <div className="relative z-10 text-center mb-24 px-6">
         <motion.div
