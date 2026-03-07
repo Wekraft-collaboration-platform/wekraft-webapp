@@ -1,6 +1,12 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence, useScroll, useTransform, useSpring } from "framer-motion";
+import {
+  motion,
+  AnimatePresence,
+  useScroll,
+  useTransform,
+  useSpring,
+} from "framer-motion";
 import { AnimatedShinyText } from "@/components/ui/animated-shiny-text";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
@@ -127,7 +133,9 @@ const Hero = () => {
         body: JSON.stringify({ email: trimmed }),
       }).catch((err) => console.error("[waitlist] fetch failed:", err));
 
-      toast.success("You're on the list! We'll reach out soon.", { id: toastId });
+      toast.success("You're on the list! We'll reach out soon.", {
+        id: toastId,
+      });
       setEmail("");
     } catch (err) {
       toast.error("Something went wrong. Please try again.", { id: toastId });
@@ -138,7 +146,10 @@ const Hero = () => {
   // ─────────────────────────────────────────────────────────
 
   return (
-    <div ref={containerRef} className="min-h-screen w-full bg-black relative overflow-hidden flex flex-col">
+    <div
+      ref={containerRef}
+      className="min-h-screen w-full bg-black relative overflow-hidden flex flex-col"
+    >
       <div className="">
         <Spotlight
           className="-top-40 left-0 md:-top-20 md:left-60"
@@ -147,7 +158,7 @@ const Hero = () => {
       </div>
       <div className="absolute inset-0 z-0">
         <Image
-          src="/night-bg.png"
+          src="/night-hero.png"
           alt="background"
           className="size-full block object-cover opacity-70"
           width="3276"
@@ -164,35 +175,34 @@ const Hero = () => {
           <span className="text-gray-200">Better way to collaborate</span>
         </AnimatedShinyText>
 
-        <div className="flex flex-col gap-4 md:gap-2 items-center justify-center font-pop  relative px-4">
-          <h1 className="text-5xl md:text-8xl text-center leading-none md:leading-[1.40] bg-linear-to-b from-white via-white to-neutral-800 bg-clip-text text-transparent font-semibold ">
+        <div className="flex flex-col gap-2 items-center justify-center font-pop relative px-4">
+          <h1 className="text-5xl md:text-8xl text-center leading-[1.1] md:leading-[1.40] bg-linear-to-b from-white via-white to-neutral-800 bg-clip-text text-transparent font-semibold py-1">
             Build Together
           </h1>
-          <div className="flex items-center gap-4 -mt-2 md:-mt-4">
-            <h1 className="text-5xl md:text-8xl leading-[1.15] bg-linear-to-b from-white via-white to-neutral-800 bg-clip-text text-transparent font-semibold ">
+          <div className="flex items-center gap-4 -mt-1 md:-mt-4">
+            <h1 className="text-5xl md:text-8xl leading-[1.15] bg-linear-to-b from-white via-white to-neutral-800 bg-clip-text text-transparent font-semibold py-1">
               Craft Faster
             </h1>
             <div className="hidden md:flex self-center -mb-4 w-12 h-12 items-center justify-center rounded-lg bg-linear-to-br from-blue-300 to-blue-700">
               <LucideTrendingUp className="w-10 h-10 text-white" />
             </div>
-            {/* <div className="md:hidden flex self-center  w-10 h-10 items-center justify-center rounded-lg bg-linear-to-br from-blue-300 to-blue-700">
-              <LucideTrendingUp className="w-8 h-8 text-white" />
-            </div> */}
           </div>
 
-          <FloatingCursor
-            name="Ritesh"
-            color="#3b82f6"
-            initialX="-10%"
-            initialY="50%"
-            isLeft={true}
-          />
-          <FloatingCursor
-            name="Rox"
-            color="#6366f1"
-            initialX="104%"
-            initialY="30%"
-          />
+          <div className="hidden min-[600px]:block">
+            <FloatingCursor
+              name="Ritesh"
+              color="#3b82f6"
+              initialX="-10%"
+              initialY="50%"
+              isLeft={true}
+            />
+            <FloatingCursor
+              name="Rox"
+              color="#6366f1"
+              initialX="104%"
+              initialY="30%"
+            />
+          </div>
         </div>
 
         <div className="w-full md:w-220  mx-auto relative mt-5">
@@ -202,10 +212,10 @@ const Hero = () => {
           <div className="absolute inset-x-60 top-0 bg-linear-to-r from-transparent via-sky-500 to-transparent h-[5px] w-1/4 blur-sm" />
           <div className="absolute inset-x-60 top-0 bg-linear-to-r from-transparent via-blue-500 to-transparent h-px w-1/4" />
 
-          <p className="text-gray-400 text-base md:text-[20px] mt-5 font-sans tracking-tight text-pretty text-center">
-            Autonomous agents that plan, manage, and track your project.
-            Match talent, collaborate seamlessly, and never let deadline slip.
-            Build together — frictionless.
+          <p className="text-neutral-300 md:text-neutral-400 text-base md:text-[20px] mt-5 font-sans tracking-tight text-pretty text-center px-4">
+            AI agents that plan, assign, and track — autonomously. Skill-matched
+            teams, real-time sync, zero deadline drift. Build together —
+            frictionless.
           </p>
 
           <div className="flex flex-col items-center justify-center gap-4 mt-10 md:mt-14 px-5 md:px-0">
@@ -217,7 +227,9 @@ const Hero = () => {
                 className="w-full md:w-96 h-8 md:h-9 bg-neutral-300 border-2 border-white/30"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                onKeyDown={(e) => e.key === "Enter" && !loading && handleJoinWaitlist()}
+                onKeyDown={(e) =>
+                  e.key === "Enter" && !loading && handleJoinWaitlist()
+                }
                 disabled={loading}
               />
               <Button
@@ -229,12 +241,16 @@ const Hero = () => {
               </Button>
             </div>
             <p className="text-gray-400 text-sm mt-2 font-sans tracking-tight text-pretty text-center">
-              Join the waitlist to get early access to WeKraft. <LaptopMinimalCheck className="w-4 h-4 inline" />
+              Join the waitlist to get early access to WeKraft.{" "}
+              <LaptopMinimalCheck className="w-4 h-4 inline" />
             </p>
           </div>
         </div>
 
-        <div className="hidden md:block mt-18 w-full max-w-[85%] mx-auto" style={{ perspective: "1200px" }}>
+        <div
+          className="hidden md:block mt-18 w-full max-w-[85%] mx-auto"
+          style={{ perspective: "1200px" }}
+        >
           <motion.div
             style={{ rotateX, scale, y, opacity: rawOpacity }}
             className="relative will-change-transform"
@@ -257,11 +273,10 @@ const Hero = () => {
         </div>
 
         {/* Mobile version */}
-        {/* Mobile */}
-        <div className="block md:hidden mt-20 w-full max-w-[90%] scale-105 mx-auto">
-          <div className="relative">
-            <div className="absolute -inset-x-4 -top-4 h-8 bg-blue-500/25 blur-2xl rounded-full pointer-events-none" />
-            <div className="rounded-xl overflow-hidden border border-white/10">
+        <div className="block md:hidden mt-20 relative w-screen left-1/2 -translate-x-1/2 overflow-x-auto scrollbar-hide px-4">
+          <div className="relative w-[180%] shrink-0">
+            <div className="absolute -inset-x-4 -top-4 h-8 bg-blue-500/20 blur-2xl rounded-full pointer-events-none" />
+            <div className="rounded-xl overflow-hidden border border-white/10 shadow-[0_0_50px_rgba(59,130,246,0.1)]">
               <Image
                 src="/hero-img.png"
                 alt="Hero Image"
@@ -271,7 +286,7 @@ const Hero = () => {
                 priority
               />
             </div>
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-linear-to-t from-black via-black/50 to-transparent" />
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-linear-to-t from-black via-black/40 to-transparent" />
           </div>
         </div>
       </main>
