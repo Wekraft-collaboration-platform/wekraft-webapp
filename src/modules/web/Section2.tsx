@@ -108,7 +108,7 @@ const Section2 = () => {
     <motion.div
       ref={containerRef}
       style={{ scale, opacity }}
-      className="min-h-screen w-full bg-black overflow-hidden selection:bg-blue-500/30 dark relative z-0"
+      className="hidden md:block min-h-screen w-full bg-black overflow-hidden selection:bg-blue-500/30 dark relative z-0"
     >
       <div className="absolute top-0 left-0 w-full h-full bg-[linear-gradient(to_right,#80808016_1px,transparent_1px),linear-gradient(to_bottom,#80808016_1px,transparent_1px)] bg-size-[36px_36px]" />
       <div className="absolute inset-0 z-0">

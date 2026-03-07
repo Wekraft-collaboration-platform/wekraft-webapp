@@ -125,7 +125,7 @@ const Hero = () => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: trimmed }),
-      }) .catch((err) => console.error("[waitlist] fetch failed:", err));
+      }).catch((err) => console.error("[waitlist] fetch failed:", err));
 
       toast.success("You're on the list! We'll reach out soon.", { id: toastId });
       setEmail("");
@@ -138,7 +138,7 @@ const Hero = () => {
   // ─────────────────────────────────────────────────────────
 
   return (
-    <div ref={containerRef} className="min-h-screen max-h-[200vh] w-full  bg-black relative overflow-hidden">
+    <div ref={containerRef} className="min-h-screen md:max-h-[200vh] w-full  bg-black relative overflow-hidden">
       <div className="">
         <Spotlight
           className="-top-40 left-0 md:-top-20 md:left-60"
@@ -156,23 +156,26 @@ const Hero = () => {
       <div className="absolute inset-0 bg-linear-to-b from-transparent via-black/20 to-black/75" />
 
       <main className="absolute inset-0 flex flex-col items-center justify-center pt-20">
-        <AnimatedShinyText className="inline-flex items-center justify-center px-4 py-1 border border-gray-400/30 rounded-full  cursor-pointer font-inter tracking-wide transition-colors duration-200 mb-20">
+        <AnimatedShinyText className="inline-flex items-center justify-center px-4 py-1 border border-gray-400/30 rounded-full  cursor-pointer font-inter tracking-wide transition-colors duration-200 mb-14">
           <span>✨</span>
           <Separator orientation="vertical" className="mx-2 bg-gray-600" />
           <span className="text-gray-200">Better way to collaborate</span>
         </AnimatedShinyText>
 
-        <div className="flex flex-col gap-2 items-center justify-center font-pop  relative">
-          <h1 className="text-8xl leading-[1.40] bg-linear-to-b from-white via-white to-neutral-800 bg-clip-text text-transparent font-semibold ">
+        <div className="flex flex-col gap-4 md:gap-2 items-center justify-center font-pop  relative px-4">
+          <h1 className="text-[56px] md:text-8xl text-center leading-none md:leading-[1.40] bg-linear-to-b from-white via-white to-neutral-800 bg-clip-text text-transparent font-semibold ">
             Build <span className="">Together</span>
           </h1>
           <div className="flex items-center gap-4 -mt-4">
-            <h1 className="text-8xl leading-[1.15] bg-linear-to-b from-white via-white to-neutral-800 bg-clip-text text-transparent font-semibold ">
+            <h1 className="text-[56px] md:text-8xl leading-[1.15] bg-linear-to-b from-white via-white to-neutral-800 bg-clip-text text-transparent font-semibold ">
               Craft <span className="">Faster</span>
             </h1>
-            <div className="self-center -mb-4 w-12 h-12 flex items-center justify-center rounded-lg bg-linear-to-br from-blue-300 to-blue-700">
+            <div className="hidden md:flex self-center -mb-4 w-12 h-12 items-center justify-center rounded-lg bg-linear-to-br from-blue-300 to-blue-700">
               <LucideTrendingUp className="w-10 h-10 text-white" />
             </div>
+            {/* <div className="md:hidden flex self-center  w-10 h-10 items-center justify-center rounded-lg bg-linear-to-br from-blue-300 to-blue-700">
+              <LucideTrendingUp className="w-8 h-8 text-white" />
+            </div> */}
           </div>
 
           <FloatingCursor
@@ -190,26 +193,26 @@ const Hero = () => {
           />
         </div>
 
-        <div className="w-220  mx-auto relative mt-5">
+        <div className="w-full md:w-220  mx-auto relative mt-5">
           {/* Gradients */}
           <div className="absolute inset-x-20 top-0 bg-linear-to-r from-transparent via-blue-500 to-transparent h-[2px] w-3/4 blur-sm" />
           <div className="absolute inset-x-20 top-0 bg-linear-to-r from-transparent via-blue-500 to-transparent h-px w-3/4" />
           <div className="absolute inset-x-60 top-0 bg-linear-to-r from-transparent via-sky-500 to-transparent h-[5px] w-1/4 blur-sm" />
           <div className="absolute inset-x-60 top-0 bg-linear-to-r from-transparent via-blue-500 to-transparent h-px w-1/4" />
 
-          <p className="text-gray-400 text-[20px] mt-5 font-sans tracking-tight text-pretty text-center">
+          <p className="text-gray-400 text-base md:text-[20px] mt-5 font-sans tracking-tight text-pretty text-center">
             Autonomous agents that plan, manage, and track your project.
             Match talent, collaborate seamlessly, and never let deadline slip.
             Build together — frictionless.
           </p>
 
-          <div className="flex flex-col items-center justify-center gap-4 mt-14">
+          <div className="flex flex-col items-center justify-center gap-4 mt-10 md:mt-14 px-5 md:px-0">
             {/* WAITING LIST & EARLY ACCESS */}
             <div className="flex items-center gap-4">
               <Input
                 type="email"
                 placeholder="Enter your email..."
-                className="w-96 h-9 bg-neutral-300"
+                className="w-full md:w-96 h-8 md:h-9 bg-neutral-300"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && !loading && handleJoinWaitlist()}
@@ -218,7 +221,7 @@ const Hero = () => {
               <Button
                 onClick={handleJoinWaitlist}
                 disabled={loading}
-                className="h-10! cursor-pointer bg-blue-800 hover:bg-blue-900 border border-white/30 disabled:opacity-60 disabled:cursor-not-allowed"
+                className=" h-9 md:h-10! cursor-pointer text-xs md:text-sm bg-blue-800 hover:bg-blue-900 border border-white/30 disabled:opacity-60 disabled:cursor-not-allowed"
               >
                 {loading ? "Joining..." : "Join Waitlist"} <MousePointerBan className="w-4 h-4" />
               </Button>
@@ -229,7 +232,7 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className="mt-18 w-full max-w-[85%] mx-auto" style={{ perspective: "1200px" }}>
+        <div className="hidden md:block mt-18 w-full max-w-[85%] mx-auto" style={{ perspective: "1200px" }}>
           <motion.div
             style={{ rotateX, scale, y, opacity: rawOpacity }}
             className="relative will-change-transform"
@@ -247,8 +250,27 @@ const Hero = () => {
                 priority
               />
             </div>
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-80 bg-linear-to-t from-black via-black/50 to-transparent" />
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 md:h-80 bg-linear-to-t from-black via-black/50 to-transparent" />
           </motion.div>
+        </div>
+
+        {/* Mobile version */}
+        {/* Mobile */}
+        <div className="block md:hidden mt-20 w-full max-w-[90%] scale-105 mx-auto">
+          <div className="relative">
+            <div className="absolute -inset-x-4 -top-4 h-8 bg-blue-500/25 blur-2xl rounded-full pointer-events-none" />
+            <div className="rounded-xl overflow-hidden border border-white/10">
+              <Image
+                src="/hero-img-1.png"
+                alt="Hero Image"
+                className="w-full h-auto block"
+                width={1920}
+                height={1080}
+                priority
+              />
+            </div>
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-linear-to-t from-black via-black/50 to-transparent" />
+          </div>
         </div>
       </main>
     </div>

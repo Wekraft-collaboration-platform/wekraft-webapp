@@ -35,7 +35,7 @@ const Section1 = () => {
     <section className="relative w-full bg-black overflow-hidden selection:bg-blue-500/30">
       <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-black to-transparent z-10" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-32 md:py-40">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-28 md:py-40">
         <div className="max-w-3xl mb-24">
           <motion.div
             {...fadeUp}
@@ -48,7 +48,7 @@ const Section1 = () => {
           <motion.h2
             {...fadeUp}
             transition={{ ...fadeUp.transition, delay: 0.1 }}
-            className="text-5xl leading-[1.1] font-semibold tracking-[-0.03em] text-white mb-6"
+            className="text-4xl md:text-5xl leading-[1.1] font-semibold tracking-[-0.03em] text-white mb-6"
           >
             Build with clarity.
             <br />
