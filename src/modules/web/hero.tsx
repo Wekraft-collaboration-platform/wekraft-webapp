@@ -118,6 +118,15 @@ const Hero = () => {
 
     try {
       await saveEmail({ email: trimmed });
+
+      // API route (fire & forget)
+      // api/waitlist
+      fetch("//waitlist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: trimmed }),
+      }) .catch((err) => console.error("[waitlist] fetch failed:", err));
+
       toast.success("You're on the list! We'll reach out soon.", { id: toastId });
       setEmail("");
     } catch (err) {

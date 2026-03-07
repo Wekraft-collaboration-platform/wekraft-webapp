@@ -32,7 +32,15 @@ const Footer = () => {
 
     try {
       await saveEmail({ email: trimmed });
-      toast.success("You're on the list! 🎉 We'll reach out soon.", { id: toastId });
+
+      // API route (fire & forget)
+      fetch("//waitlist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: trimmed }),
+      }).catch((err) => console.error("[waitlist] fetch failed:", err));
+
+      toast.success("You're on the list! We'll reach out soon.", { id: toastId });
       setEmail("");
     } catch (err) {
       toast.error("Something went wrong. Please try again.", { id: toastId });
