@@ -150,7 +150,7 @@ const Hero = () => {
       ref={containerRef}
       className="min-h-screen w-full bg-black relative overflow-hidden flex flex-col"
     >
-      <div className="">
+      <div className="hidden sm:block">
         <Spotlight
           className="-top-40 left-0 md:-top-20 md:left-60"
           fill="#C1C1C1"
@@ -169,19 +169,29 @@ const Hero = () => {
       </div>
 
       <main className="relative z-10 flex flex-col items-center pt-28 md:pt-40 pb-20 w-full">
-        <AnimatedShinyText className="inline-flex items-center justify-center px-4 py-1 border border-gray-400/30 rounded-full  cursor-pointer font-inter tracking-wide transition-colors duration-200 mb-14">
+        <div className="inline-flex items-center justify-center px-4 py-1 border border-gray-400/30 rounded-full  cursor-pointer font-inter tracking-wide transition-colors duration-200 mb-14 bg-blue-500/5">
           <span>✨</span>
-          <Separator orientation="vertical" className="mx-2 bg-gray-600" />
+          <span className="text-white mx-2 -mt-1">|</span>
           <span className="text-gray-200">Better way to collaborate</span>
-        </AnimatedShinyText>
+        </div>
 
         <div className="flex flex-col gap-2 items-center justify-center font-pop relative px-4">
-          <h1 className="text-5xl md:text-8xl text-center leading-[1.1] md:leading-[1.40] bg-linear-to-b from-white via-white to-neutral-800 bg-clip-text text-transparent font-semibold py-1">
-            Build Together
+          <h1 className="text-[56px] md:text-8xl text-center leading-[1.1] md:leading-[1.40] font-semibold py-1">
+            <span className="bg-linear-to-b from-white via-white to-neutral-800 bg-clip-text text-transparent">
+              Build
+            </span>{" "}
+            <span className="bg-linear-to-b from-white via-white to-neutral-800 bg-clip-text text-transparent">
+              Together
+            </span>
           </h1>
           <div className="flex items-center gap-4 -mt-1 md:-mt-4">
-            <h1 className="text-5xl md:text-8xl leading-[1.15] bg-linear-to-b from-white via-white to-neutral-800 bg-clip-text text-transparent font-semibold py-1">
-              Craft Faster
+            <h1 className="text-[56px] md:text-8xl leading-[1.15] font-semibold py-1">
+              <span className="bg-linear-to-b from-white via-white to-neutral-800 bg-clip-text text-transparent">
+                Craft
+              </span>{" "}
+              <span className="bg-linear-to-b from-white via-white to-neutral-800 bg-clip-text text-transparent">
+                Faster
+              </span>
             </h1>
             <div className="hidden md:flex self-center -mb-4 w-12 h-12 items-center justify-center rounded-lg bg-linear-to-br from-blue-300 to-blue-700">
               <LucideTrendingUp className="w-10 h-10 text-white" />
@@ -213,8 +223,8 @@ const Hero = () => {
           <div className="absolute inset-x-60 top-0 bg-linear-to-r from-transparent via-blue-500 to-transparent h-px w-1/4" />
 
           <p className="text-neutral-300 md:text-neutral-400 text-base md:text-[20px] mt-5 font-sans tracking-tight text-pretty text-center px-4">
-            AI agents that plan, assign, and track — autonomously. Skill-matched
-            teams, real-time sync, zero deadline drift. Build together —
+            AI agents that plan, assign, and track — autonomously. Collaborate
+            semalessly, real-time sync, zero deadline drift. Build together —
             frictionless.
           </p>
 
