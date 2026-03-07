@@ -36,7 +36,7 @@ const team = [
   {
     name: "Bhanu Pratap",
     role: "Core Engine Developer",
-    image: "https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?auto=format&fit=crop&q=80&w=200&h=200", // placeholder
+    image: "/bhanu.jpeg",
     linkedin: "bhanu-linkedin", // Placeholder
     github: "bhanu-github", // Placeholder
     bio: "Powering the intelligent agents and cross-stack integrations that keep development moving.",
