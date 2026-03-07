@@ -428,64 +428,71 @@ const Pricing = () => {
         <div className="rounded-[32px] border border-white/20 overflow-hidden bg-[#0a0a0a]/70 backdrop-blur-3xl shadow-[0_20px_100px_-10px_rgba(255,255,255,0.18)] relative">
           <div className="absolute inset-0 bg-gradient-to-b from-white/[0.08] to-transparent pointer-events-none" />
           
-          <div className="relative z-10 overflow-x-auto">
-            {/* Table header - Sticky */}
-            <div className="grid grid-cols-4 border-b border-white/[0.08] bg-[#0a0a0a]/90 backdrop-blur-md sticky top-0 z-20">
-              <div className="py-2 px-5 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-500 flex items-center">
-                Comparison
-              </div>
-              {plans.map((p) => (
-                <div
-                  key={p.key}
-                  className={cn(
-                    "py-2 px-5 text-center text-sm font-semibold tracking-tight",
-                    p.highlighted ? "text-white" : "text-gray-400",
-                  )}
-                >
-                  {p.name}
+          <div className="relative z-10 overflow-x-auto scrollbar-hide">
+            <div className="min-w-[650px] md:min-w-full">
+              {/* Table header - Sticky */}
+              <div className="grid grid-cols-4 border-b border-white/[0.08] bg-[#0a0a0a]/90 backdrop-blur-md sticky top-0 z-20">
+                <div className="py-2 px-5 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-500 flex items-center">
+                  Comparison
                 </div>
-              ))}
-            </div>
-
-            {/* Table body */}
-            {featureCategories.map((cat, catIdx) => (
-              <div key={catIdx}>
-                {/* Category Header */}
-                <div className="grid grid-cols-4 border-b border-white/[0.06] bg-[#050505]">
-                  <div className="col-span-4 px-6 py-1.5 flex items-center gap-3">
-                    <div className="p-1.5 rounded-lg bg-white/5 border border-white/10 text-white">
-                      {cat.icon}
-                    </div>
-                    <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-white/90">
-                      {cat.title}
-                    </span>
-                  </div>
-                </div>
-
-                {cat.rows.map((row, rowIdx) => (
+                {plans.map((p) => (
                   <div
-                    key={rowIdx}
-                    className="grid grid-cols-4 border-b border-white/[0.03] last:border-0 hover:bg-white/[0.03] transition-all duration-300 group/row"
+                    key={p.key}
+                    className={cn(
+                      "py-2 px-5 text-center text-sm font-semibold tracking-tight",
+                      p.highlighted ? "text-white" : "text-gray-400",
+                    )}
                   >
-                    <div className="flex items-center gap-4 px-6 py-1.5 text-[13px] text-gray-400 group-hover/row:text-gray-200 transition-colors">
-                      <div className="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-lg bg-white/5 border border-white/5 group-hover/row:bg-white group-hover/row:text-black transition-all">
-                        {React.isValidElement(row.icon) && React.cloneElement(row.icon as React.ReactElement<any>, { className: "h-3.5 w-3.5" })}
-                      </div>
-                      <span className="font-normal tracking-wide">{row.label}</span>
-                    </div>
-                    <div className="flex items-center justify-center px-6 py-1.5 border-l border-white/[0.03]">
-                      <FeatureValue value={row.hobby} />
-                    </div>
-                    <div className="flex items-center justify-center px-6 py-1.5 border-l border-white/[0.03] bg-white/[0.01]">
-                      <FeatureValue value={row.team} />
-                    </div>
-                    <div className="flex items-center justify-center px-6 py-1.5 border-l border-white/[0.03]">
-                      <FeatureValue value={row.studio} />
-                    </div>
+                    {p.name}
                   </div>
                 ))}
               </div>
-            ))}
+
+              {/* Table body */}
+              {featureCategories.map((cat, catIdx) => (
+                <div key={catIdx}>
+                  {/* Category Header */}
+                  <div className="grid grid-cols-4 border-b border-white/[0.06] bg-[#050505]">
+                    <div className="col-span-4 px-6 py-1.5 flex items-center gap-3">
+                      <div className="p-1.5 rounded-lg bg-white/5 border border-white/10 text-white">
+                        {cat.icon}
+                      </div>
+                      <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-white/90">
+                        {cat.title}
+                      </span>
+                    </div>
+                  </div>
+
+                  {cat.rows.map((row, rowIdx) => (
+                    <div
+                      key={rowIdx}
+                      className="grid grid-cols-4 border-b border-white/[0.03] last:border-0 hover:bg-white/[0.03] transition-all duration-300 group/row"
+                    >
+                      <div className="flex items-center gap-4 px-6 py-1.5 text-[13px] text-gray-400 group-hover/row:text-gray-200 transition-colors">
+                        <div className="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-lg bg-white/5 border border-white/5 group-hover/row:bg-white group-hover/row:text-black transition-all">
+                          {React.isValidElement(row.icon) &&
+                            React.cloneElement(row.icon as React.ReactElement<any>, {
+                              className: "h-3.5 w-3.5",
+                            })}
+                        </div>
+                        <span className="font-normal tracking-wide">
+                          {row.label}
+                        </span>
+                      </div>
+                      <div className="flex items-center justify-center px-6 py-1.5 border-l border-white/[0.03]">
+                        <FeatureValue value={row.hobby} />
+                      </div>
+                      <div className="flex items-center justify-center px-6 py-1.5 border-l border-white/[0.03] bg-white/[0.01]">
+                        <FeatureValue value={row.team} />
+                      </div>
+                      <div className="flex items-center justify-center px-6 py-1.5 border-l border-white/[0.03]">
+                        <FeatureValue value={row.studio} />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

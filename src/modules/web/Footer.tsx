@@ -117,7 +117,7 @@ const Footer = () => {
             <Button
               onClick={handleJoinWaitlist}
               disabled={loading}
-              className="h-10 px-8 cursor-pointer bg-blue-700 hover:bg-blue-800 text-white border border-white/20 rounded-xl font-medium transition-all duration-300 hover:shadow-[0_0_20px_rgba(37,99,235,0.4)] disabled:opacity-60 disabled:cursor-not-allowed"
+              className="h-8 md:h-10 px-6 md:px-8 cursor-pointer bg-blue-700 hover:bg-blue-800 text-white border border-white/20 rounded-xl font-medium transition-all duration-300 hover:shadow-[0_0_20px_rgba(37,99,235,0.4)] disabled:opacity-60 disabled:cursor-not-allowed"
             >
               {loading ? "Joining..." : "Join Waitlist"} <MousePointerBan className="ml-2 w-5 h-5" />
             </Button>
@@ -140,7 +140,7 @@ const Footer = () => {
           </span>
         </div>
 
-        <div className="flex items-center flex-wrap text-neutral-200 justify-center gap-x-8 ">
+        <div className="flex items-center flex-wrap text-neutral-200 justify-center gap-x-8 gap-y-4 md:gap-y-0">
           <Link
             href="/reach-us"
             className="hover:text-white transition-colors flex items-center gap-2"

@@ -13,6 +13,7 @@ const navLinks: { label: string; href: string }[] = [
   { label: "Pricing", href: "/pricing" },
   { label: "Reach us", href: "/reach-us" },
   { label: "Docs", href: "/" },
+  { label: "About us", href: "/about-us" },
 ];
 
 const Navbar = () => {
@@ -29,7 +30,7 @@ const Navbar = () => {
       ([entry]) => {
         setIsLightSection(entry.isIntersecting);
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     const section3 = document.getElementById("section3");
@@ -49,20 +50,22 @@ const Navbar = () => {
         scrolled || isMenuOpen || isLightSection
           ? clsx(
               "backdrop-blur-md shadow-lg max-w-3xl w-[95%] md:w-full rounded-xl",
-              isLightSection ? "bg-black/80 border border-white/10" : "bg-white/15"
+              isLightSection
+                ? "bg-black/80 border border-white/10"
+                : "bg-white/15",
             )
-          : "bg-transparent w-full"
+          : "bg-transparent w-full",
       )}
     >
       <nav
         className={clsx(
           "mx-auto max-w-7xl px-6 flex items-center justify-between transition-all duration-300",
-          scrolled || isLightSection ? "h-14 max-w-165 mx-auto" : "h-20"
+          scrolled || isLightSection ? "h-14 max-w-165 mx-auto" : "h-20",
         )}
       >
         <div className="flex items-center gap-2">
           <Image src="/logo.svg" alt="Logo" width={32} height={32} />
-          {(!scrolled && !isLightSection) && (
+          {!scrolled && !isLightSection && (
             <span className="font-semibold font-pop text-white text-lg sm:text-xl">
               WeKraft
             </span>
@@ -70,7 +73,7 @@ const Navbar = () => {
         </div>
 
         {/* Desktop Links */}
-        <div className="hidden md:flex gap-10 text-sm text-white/80">
+        <div className="hidden md:flex gap-8 text-sm text-white/80">
           {navLinks.map(({ label, href }) => (
             <Link
               key={label}
@@ -93,7 +96,7 @@ const Navbar = () => {
             }
             className={clsx(
               "hidden md:flex duration-300 hover:scale-105 transition-all cursor-pointer font-inter text-sm text-white bg-transparent border border-white/30",
-              (scrolled || isLightSection) && "px-4 py-1.5 text-xs"
+              (scrolled || isLightSection) && "px-4 py-1.5 text-xs",
             )}
           >
             {scrolled || isLightSection ? (
@@ -114,7 +117,11 @@ const Navbar = () => {
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="md:hidden text-white p-1 opacity-80 hover:opacity-100 transition-opacity"
           >
-            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {isMenuOpen ? (
+              <X className="w-6 h-6" />
+            ) : (
+              <Menu className="w-6 h-6" />
+            )}
           </button>
         </div>
       </nav>
@@ -160,4 +167,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
