@@ -96,7 +96,6 @@ const SkillMatchingUI = () => (
   </div>
 );
 
-// ── col config: 8 columns, "Today" sits at col index 4 (0-based) ──
 const COLS = ["S 13", "M 14", "T 15", "W 16", "T 17", "F 18", "S 19", "S 20"];
 const TODAY_COL = 3; // W 16
 
@@ -149,14 +148,14 @@ const tasks = [
 
 const TimelineTrackingUI = () => {
   return (
-    <div className="w-full px-8 md:px-10 pb-8 pt-2">
+    <div className="w-full px-4 md:px-10 pb-8 pt-2">
       {/* ── App chrome: tab bar ── */}
-      <div className="flex items-center gap-1 mb-4 border-b border-white/[0.06] pb-3">
+      <div className="flex items-center gap-1 mb-4 border-b border-white/[0.06] pb-3 overflow-x-auto scrollbar-hide">
         {["Board", "Timeline", "List", "Table"].map((tab) => (
           <button
             key={tab}
             className={cn(
-              "px-3 py-1 rounded-md text-[11px] font-medium transition-colors",
+              "px-3 py-1 rounded-md text-[11px] font-medium transition-colors shrink-0",
               tab === "Timeline"
                 ? "text-white border-b-2 border-blue-500 rounded-none pb-2.5 -mb-px"
                 : "text-neutral-500 hover:text-neutral-300"
@@ -168,133 +167,146 @@ const TimelineTrackingUI = () => {
         ))}
       </div>
 
-      {/* ── Column header row ── */}
-      <div className="flex">
-        {/* row label gutter */}
-        <div className="w-36 shrink-0" />
-        {/* day columns */}
-        <div className="flex-1 grid gap-0" style={{ gridTemplateColumns: `repeat(${COLS.length}, 1fr)` }}>
-          {COLS.map((col, i) => (
-            <div key={col} className={cn(
-              "text-center py-1",
-              i === TODAY_COL ? "relative" : ""
-            )}>
-              <span className={cn(
-                "text-[10px] font-mono",
-                i === TODAY_COL ? "text-blue-400 font-semibold" : "text-neutral-600"
-              )}>{col}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* ── Timeline body ── */}
-      <div className="relative">
-        {/* vertical grid lines */}
-        <div className="absolute inset-0 flex pointer-events-none" style={{ left: "144px" }}>
-          {COLS.map((_, i) => (
+      {/* ── Timeline Container with Horizontal Scroll ── */}
+      <div className="relative overflow-x-auto scrollbar-hide -mx-4 px-4 pb-4">
+        <div className="min-w-[600px] relative">
+          {/* ── Column header row ── */}
+          <div className="flex">
+            {/* row label gutter */}
+            <div className="w-24 md:w-36 shrink-0" />
+            {/* day columns */}
             <div
-              key={i}
-              className={cn(
-                "flex-1 border-l",
-                i === TODAY_COL ? "border-blue-500/40" : "border-white/[0.04]"
-              )}
-            />
-          ))}
-        </div>
-
-        {/* Today line + label */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.6 }}
-          className="absolute top-0 bottom-0 z-20 pointer-events-none"
-          style={{ left: `calc(144px + ${(TODAY_COL / COLS.length) * 100}% - 0.5px)` }}
-        >
-          <div className="absolute -top-5 -translate-x-1/2 flex flex-col items-center">
-            <span className="text-[9px] font-semibold text-blue-400 mb-0.5">Today</span>
-            <div className="w-2 h-2 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.8)]" />
-          </div>
-          <div className="w-px h-full bg-blue-500/50" />
-        </motion.div>
-
-        {/* Task rows */}
-        <div className="space-y-2 mt-1">
-          {tasks.map((task, i) => (
-            <motion.div
-              key={task.id}
-              initial={{ opacity: 0, y: 8 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.15 + i * 0.1 }}
-              className="flex items-center h-11"
+              className="flex-1 grid gap-0"
+              style={{ gridTemplateColumns: `repeat(${COLS.length}, 1fr)` }}
             >
-              {/* Row label */}
-              <div className="w-36 shrink-0 pr-4">
-                <span className="text-[11px] text-neutral-400 font-medium">{task.name}</span>
-              </div>
+              {COLS.map((col, i) => (
+                <div key={col} className={cn("text-center py-1", i === TODAY_COL ? "relative" : "")}>
+                  <span
+                    className={cn(
+                      "text-[10px] font-mono",
+                      i === TODAY_COL ? "text-blue-400 font-semibold" : "text-neutral-600"
+                    )}
+                  >
+                    {col}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
 
-              {/* Grid area */}
-              <div
-                className="flex-1 relative h-full"
-                style={{ display: "grid", gridTemplateColumns: `repeat(${COLS.length}, 1fr)` }}
-              >
-                {/* Task bar */}
-                <motion.div
-                  initial={{ scaleX: 0, opacity: 0 }}
-                  whileInView={{ scaleX: 1, opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.3 + i * 0.1, ease: "easeOut" }}
-                  style={{
-                    gridColumnStart: task.colStart + 1,
-                    gridColumnEnd: task.colStart + task.colSpan + 1,
-                    transformOrigin: "left center",
-                  }}
+          {/* ── Timeline body ── */}
+          <div className="relative">
+            {/* vertical grid lines */}
+            <div className="absolute inset-0 flex pointer-events-none" style={{ left: "96px" }}>
+              {COLS.map((_, i) => (
+                <div
+                  key={i}
                   className={cn(
-                    "rounded-lg border flex items-center px-3 gap-2 h-full",
-                    task.status === "done" && "bg-emerald-500/10 border-emerald-500/20",
-                    task.status === "active" && "bg-amber-500/10 border-amber-500/20",
-                    task.status === "pending" && "bg-white/[0.03] border-white/[0.07]"
+                    "flex-1 border-l",
+                    i === TODAY_COL ? "border-blue-500/40" : "border-white/[0.04]"
                   )}
+                />
+              ))}
+            </div>
+
+            {/* Today line + label */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.6 }}
+              className="absolute top-0 bottom-0 z-20 pointer-events-none"
+              style={{ left: `calc(96px + ${(TODAY_COL / COLS.length) * 100}% - 0.5px)` }}
+            >
+              <div className="absolute -top-5 -translate-x-1/2 flex flex-col items-center">
+                <span className="text-[9px] font-semibold text-blue-400 mb-0.5">Today</span>
+                <div className="w-2 h-2 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.8)]" />
+              </div>
+              <div className="w-px h-full bg-blue-500/50" />
+            </motion.div>
+
+            {/* Task rows */}
+            <div className="space-y-2 mt-1">
+              {tasks.map((task, i) => (
+                <motion.div
+                  key={task.id}
+                  initial={{ opacity: 0, y: 8 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.15 + i * 0.1 }}
+                  className="flex items-center h-10 md:h-11"
                 >
-                  {/* Left accent */}
-                  <div
-                    className="w-0.5 h-5 rounded-full shrink-0"
-                    style={{ backgroundColor: task.accent }}
-                  />
-                  <div className="flex-1 min-w-0">
-                    <div className={cn(
-                      "text-[11px] font-semibold truncate",
-                      task.status === "done" && "text-emerald-300",
-                      task.status === "active" && "text-amber-300",
-                      task.status === "pending" && "text-neutral-500"
-                    )}>
+                  {/* Row label */}
+                  <div className="w-24 md:w-36 shrink-0 pr-4">
+                    <span className="text-[10px] md:text-[11px] text-neutral-400 font-medium truncate block">
                       {task.name}
-                    </div>
-                    <div className="flex items-center gap-1.5 mt-0.5">
+                    </span>
+                  </div>
+
+                  {/* Grid area */}
+                  <div
+                    className="flex-1 relative h-full"
+                    style={{ gridTemplateColumns: `repeat(${COLS.length}, 1fr)`, display: "grid" }}
+                  >
+                    {/* Task bar */}
+                    <motion.div
+                      initial={{ scaleX: 0, opacity: 0 }}
+                      whileInView={{ scaleX: 1, opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: 0.3 + i * 0.1, ease: "easeOut" }}
+                      style={{
+                        gridColumnStart: task.colStart + 1,
+                        gridColumnEnd: task.colStart + task.colSpan + 1,
+                        transformOrigin: "left center",
+                      }}
+                      className={cn(
+                        "rounded-lg border flex items-center px-2 md:px-3 gap-1.5 md:gap-2 h-full",
+                        task.status === "done" && "bg-emerald-500/10 border-emerald-500/20",
+                        task.status === "active" && "bg-amber-500/10 border-amber-500/20",
+                        task.status === "pending" && "bg-white/[0.03] border-white/[0.07]"
+                      )}
+                    >
+                      {/* Left accent */}
                       <div
-                        className="w-1 h-1 rounded-full"
+                        className="w-0.5 h-5 rounded-full shrink-0"
                         style={{ backgroundColor: task.accent }}
                       />
-                      <span className="text-[9px] text-neutral-600">{task.tag}</span>
-                      <span className="text-[9px] text-neutral-700">· {task.days}</span>
-                    </div>
-                  </div>
-                  {/* Avatars */}
-                  <div className="flex -space-x-1.5 shrink-0">
-                    {task.avatars.map((src, j) => (
-                      <img
-                        key={j}
-                        src={src}
-                        className="w-5 h-5 rounded-full border border-black/60 object-cover"
-                      />
-                    ))}
+                      <div className="flex-1 min-w-0">
+                        <div
+                          className={cn(
+                            "text-[10px] md:text-[11px] font-semibold truncate",
+                            task.status === "done" && "text-emerald-300",
+                            task.status === "active" && "text-amber-300",
+                            task.status === "pending" && "text-neutral-500"
+                          )}
+                        >
+                          {task.name}
+                        </div>
+                        <div className="flex items-center gap-1.5 mt-0.5">
+                          <div
+                            className="w-1 h-1 rounded-full"
+                            style={{ backgroundColor: task.accent }}
+                          />
+                          <span className="text-[9px] text-neutral-600">{task.tag}</span>
+                          <span className="text-[9px] text-neutral-700">· {task.days}</span>
+                        </div>
+                      </div>
+                      {/* Avatars */}
+                      <div className="flex -space-x-1.5 shrink-0">
+                        {task.avatars.map((src, j) => (
+                          <img
+                            key={j}
+                            src={src}
+                            className="w-4 h-4 md:w-5 md:h-5 rounded-full border border-black/60 object-cover"
+                          />
+                        ))}
+                      </div>
+                    </motion.div>
                   </div>
                 </motion.div>
-              </div>
-            </motion.div>
-          ))}
+              ))}
+            </div>
+          </div>
         </div>
       </div>
 
@@ -308,72 +320,81 @@ const TimelineTrackingUI = () => {
       >
         <Target className="w-3 h-3 text-blue-400 shrink-0" />
         <span className="text-[10px] text-neutral-400">
-          <span className="text-blue-400 font-semibold">WeKraft Agent:</span> On track to ship 2 days early. No blockers detected.
+          <span className="text-blue-400 font-semibold">WeKraft Agent:</span> On track to ship 2 days
+          early. No blockers detected.
         </span>
       </motion.div>
     </div>
   );
 };
 
-const AgenticDefenseUI = () => (
-  <div className="w-full h-full flex items-center justify-center p-4">
-    <div className="w-full max-w-md rounded-xl border border-white/[0.06] bg-gray-900 backdrop-blur-sm overflow-hidden">
-      <div className="flex items-center gap-2 px-4 py-2.5 border-b border-white/[0.04] bg-white/[0.02]">
-        <Code2 className="w-3 h-3 text-neutral-600" />
-        <span className="text-[11px] text-neutral-500 font-mono">auth/session.ts</span>
-        <div className="ml-auto flex items-center gap-1">
-          <div className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-          <span className="text-[9px] text-amber-400/80 font-medium">1 issue</span>
+const AgenticDefenseUI = () => {
+  return (
+    <div className="w-full h-full flex items-center justify-center p-4">
+      <div className="w-full max-w-md rounded-xl border border-white/[0.06] bg-gray-900 backdrop-blur-sm overflow-hidden">
+        <div className="flex items-center gap-2 px-4 py-2.5 border-b border-white/[0.04] bg-white/[0.02]">
+          <Code2 className="w-3 h-3 text-neutral-600" />
+          <span className="text-[11px] text-neutral-500 font-mono">auth/session.ts</span>
+          <div className="ml-auto flex items-center gap-1">
+            <div className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+            <span className="text-[9px] text-amber-400/80 font-medium">1 issue</span>
+          </div>
         </div>
-      </div>
 
-      <div className="p-3 font-mono text-[10px] leading-relaxed space-y-0.5">
-        <div className="flex items-center gap-2">
-          <span className="text-neutral-700 w-5 text-right select-none">14</span>
-          <span className="text-purple-400">export const</span>
-          <span className="text-blue-300"> validateSession</span>
-          <span className="text-neutral-500"> = () =&gt; {"{"}</span>
+        <div className="p-3 font-mono text-[10px] leading-relaxed space-y-0.5">
+          <div className="flex items-center gap-2">
+            <span className="text-neutral-700 w-5 text-right select-none">14</span>
+            <span className="text-purple-400">export const</span>
+            <span className="text-blue-300"> validateSession</span>
+            <span className="text-neutral-500"> = () =&gt; {"{"}</span>
+          </div>
+          <div className="flex items-center gap-2 bg-red-500/[0.06] -mx-3 px-3 py-1 border-l-2 border-red-500/40">
+            <span className="text-neutral-700 w-5 text-right select-none">15</span>
+            <span className="text-neutral-400"> if (!user) return</span>
+            <span className="text-red-400"> null</span>
+            <span className="text-neutral-500">;</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="text-neutral-700 w-5 text-right select-none">16</span>
+            <span className="text-orange-300"> return </span>
+            <span className="text-neutral-400">await getProfile();</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="text-neutral-700 w-5 text-right select-none">17</span>
+            <span className="text-neutral-500">{"}"}</span>
+          </div>
         </div>
-        <div className="flex items-center gap-2 bg-red-500/[0.06] -mx-3 px-3 py-1 border-l-2 border-red-500/40">
-          <span className="text-neutral-700 w-5 text-right select-none">15</span>
-          <span className="text-neutral-400">  if (!user) return</span>
-          <span className="text-red-400"> null</span>
-          <span className="text-neutral-500">;</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <span className="text-neutral-700 w-5 text-right select-none">16</span>
-          <span className="text-orange-300">  return </span>
-          <span className="text-neutral-400">await getProfile();</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <span className="text-neutral-700 w-5 text-right select-none">17</span>
-          <span className="text-neutral-500">{"}"}</span>
-        </div>
-      </div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 8 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.8, duration: 0.5 }}
-        className="mx-3 mb-3 p-3 rounded-lg bg-emerald-500/[0.06] border border-emerald-500/20"
-      >
-        <div className="flex items-center gap-2 mb-1.5">
-          <SearchCheck className="w-3 h-3 text-emerald-400" />
-          <span className="text-[9px] font-bold text-emerald-400 uppercase tracking-wider">Agent suggestion</span>
-        </div>
-        <p className="text-[10px] text-neutral-400 leading-relaxed">
-          Possible null reference at line 15. Consider adding a guard clause with proper error propagation.
-        </p>
-        <div className="flex items-center gap-3 mt-2">
-          <span className="text-[10px] text-emerald-400 font-medium cursor-pointer hover:text-emerald-300 transition-colors">Apply fix →</span>
-          <span className="text-[10px] text-neutral-600 cursor-pointer hover:text-neutral-500 transition-colors">Dismiss</span>
-        </div>
-      </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 8 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.8, duration: 0.5 }}
+          className="mx-3 mb-3 p-3 rounded-lg bg-emerald-500/[0.06] border border-emerald-500/20"
+        >
+          <div className="flex items-center gap-2 mb-1.5">
+            <SearchCheck className="w-3 h-3 text-emerald-400" />
+            <span className="text-[9px] font-bold text-emerald-400 uppercase tracking-wider">
+              Agent suggestion
+            </span>
+          </div>
+          <p className="text-[10px] text-neutral-400 leading-relaxed">
+            Possible null reference at line 15. Consider adding a guard clause with proper error
+            propagation.
+          </p>
+          <div className="flex items-center gap-3 mt-2">
+            <span className="text-[10px] text-emerald-400 font-medium cursor-pointer hover:text-emerald-300 transition-colors">
+              Apply fix →
+            </span>
+            <span className="text-[10px] text-neutral-600 cursor-pointer hover:text-neutral-500 transition-colors">
+              Dismiss
+            </span>
+          </div>
+        </motion.div>
+      </div>
     </div>
-  </div>
-);
-
+  );
+};
 
 const NewSection4 = () => {
   return (
@@ -392,7 +413,7 @@ const NewSection4 = () => {
           <motion.h2
             {...fadeUp}
             transition={{ ...fadeUp.transition, delay: 0.1 }}
-            className="text-[2.5rem] md:text-[3.25rem] font-semibold tracking-[-0.03em] text-white leading-[1.1] mb-5"
+            className="text-4xl md:text-5xl font-semibold tracking-[-0.03em] text-white leading-[1.1] mb-5"
           >
             Built for developers who
             <br />

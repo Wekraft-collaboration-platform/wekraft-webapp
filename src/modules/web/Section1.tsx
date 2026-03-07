@@ -327,7 +327,7 @@ const Section1 = () => {
               </p>
             </div>
 
-            <div className="absolute inset-0 w-full h-full flex items-end justify-center top-[45%] scale-105 opacity-80">
+            <div className="absolute inset-0 w-full h-full flex items-end justify-center top-1/2 md:top-[45%] md:scale-105 opacity-80">
 
               <Globe />
               {[

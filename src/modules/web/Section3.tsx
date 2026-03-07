@@ -115,7 +115,7 @@ const Section3 = () => {
             <motion.h2
               {...fadeUp}
               transition={{ ...fadeUp.transition, delay: 0.1 }}
-              className="text-[2.4rem] md:text-[3rem] font-semibold tracking-[-0.03em] text-neutral-900 leading-[1.1] mb-6"
+              className="text-4xl md:text-5xl font-semibold tracking-[-0.03em] text-neutral-900 leading-[1.1] mb-6"
             >
               Collaborating & Managing
               <br />
