@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useTransform, useMotionValue, useSpring } from "framer-motion";
 import {
   Sparkles,
   CheckSquare,
@@ -81,17 +81,75 @@ const FeatureCard = ({
   children: React.ReactNode;
   className?: string;
   delay?: number;
-}) => (
-  <motion.div
-    initial={{ opacity: 0, y: 20, scale: 0.95 }}
-    whileInView={{ opacity: 1, y: 0, scale: 1 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.6, delay, ease: "easeOut" }}
-    className={`max-w-[300px] w-full rounded-2xl bg-linear-to-br from-gray-800 to-gray-950 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.4)] p-4 ${className}`}
-  >
-    {children}
-  </motion.div>
-);
+}) => {
+  const cardRef = React.useRef<HTMLDivElement>(null);
+  const [pos, setPos] = React.useState({ x: 0, y: 0 });
+  const [hovered, setHovered] = React.useState(false);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    setPos({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+  };
+
+  // The main luminance is painted directly on the card background — most vivid approach
+  const bgStyle = hovered
+    ? {
+        background: `
+          radial-gradient(600px circle at ${pos.x}px ${pos.y}px,
+            rgba(59,130,246,0.22) 0%,
+            rgba(99,102,241,0.14) 30%,
+            rgba(15,23,42,0) 65%
+          ),
+          linear-gradient(135deg, #0d1117 0%, #060810 100%)
+        `,
+      }
+    : {
+        background: "linear-gradient(135deg, #0d1117 0%, #060810 100%)",
+      };
+
+  return (
+    <motion.div
+      ref={cardRef}
+      initial={{ opacity: 0, y: 20, scale: 0.95 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, delay, ease: "easeOut" }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      onMouseMove={handleMouseMove}
+      style={bgStyle}
+      className={`relative max-w-[300px] w-full rounded-2xl backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.5)] p-4 overflow-hidden border border-white/[0.07] ${className}`}
+    >
+      {/* Spotlight layer — sharp inner highlight that follows cursor tightly */}
+      {hovered && (
+        <div
+          className="pointer-events-none absolute inset-0 rounded-2xl"
+          style={{
+            background: `radial-gradient(180px circle at ${pos.x}px ${pos.y}px,
+              rgba(147,197,253,0.18) 0%,
+              rgba(59,130,246,0.08) 40%,
+              transparent 70%
+            )`,
+          }}
+        />
+      )}
+
+      {/* Border glow */}
+      <div
+        className="pointer-events-none absolute inset-0 rounded-2xl transition-all duration-300"
+        style={{
+          boxShadow: hovered
+            ? `inset 0 0 0 1px rgba(59,130,246,0.35), 0 0 30px rgba(59,130,246,0.10)`
+            : `inset 0 0 0 1px rgba(255,255,255,0.07)`,
+        }}
+      />
+
+      {/* Content */}
+      <div className="relative z-10">{children}</div>
+    </motion.div>
+  );
+};
 
 const Section2 = () => {
   const containerRef = React.useRef(null);
@@ -102,7 +160,32 @@ const Section2 = () => {
 
   const scale = useTransform(scrollYProgress, [0, 1], [1, 0.95]);
   const opacity = useTransform(scrollYProgress, [0, 1], [1, 0.7]);
+  const [orbHovered, setOrbHovered] = React.useState(false);
+  const orbRef = React.useRef<HTMLDivElement>(null);
   const BLUE_ORB: [string, string] = ["#CADCFC", "#A0B9D1"];
+
+  // Spring-based cursor tracking — creates the fluid "watery" motion
+  const rawX = useMotionValue(64);
+  const rawY = useMotionValue(64);
+  const springX = useSpring(rawX, { stiffness: 45, damping: 14, mass: 0.6 });
+  const springY = useSpring(rawY, { stiffness: 45, damping: 14, mass: 0.6 });
+
+  // Live gradient string driven by spring values — no re-render needed
+  const waterGradient = useTransform(
+    [springX, springY],
+    ([x, y]: number[]) => {
+      const cx = 64, cy = 64;
+      const dx = (x - cx) / cx;   // -1 → +1
+      const dy = (y - cy) / cy;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      const reach = 38 + dist * 30;  // gradient radius expands as cursor moves outward
+      return `radial-gradient(ellipse ${reach * 1.2}% ${reach}% at ${x}px ${y}px,
+        rgba(59,130,246,0.85) 0%,
+        rgba(59,130,246,0.45) 28%,
+        rgba(30,64,175,0.18) 52%,
+        transparent 75%)`;
+    }
+  );
 
   return (
     <motion.div
@@ -272,18 +355,115 @@ const Section2 = () => {
             </div>
 
             <div className="flex items-center justify-center">
-              <div className="relative">
-                <div className="absolute -inset-12 bg-blue-500/10 rounded-full blur-3xl animate-pulse pointer-events-none" />
-                <div className="bg-gray-800 relative h-32 w-32  rounded-full p-1.5 shadow-[inset_0_2px_8px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_8px_rgba(0,0,0,0.5)]">
-                  <div className="bg-black h-full w-full overflow-hidden rounded-full shadow-[inset_0_0_12px_rgba(0,0,0,0.05)] dark:shadow-[inset_0_0_12px_rgba(0,0,0,0.3)]">
-                    <Orb
-                      colors={BLUE_ORB}
-                      seed={1000}
-                      // agentState={'idle'}
-                      theme="dark"
+              <div
+                ref={orbRef}
+                className="relative cursor-none select-none"
+                onMouseEnter={() => setOrbHovered(true)}
+                onMouseLeave={() => {
+                  setOrbHovered(false);
+                  // Gently drift back to center
+                  rawX.set(64);
+                  rawY.set(64);
+                }}
+                onMouseMove={(e) => {
+                  if (!orbRef.current) return;
+                  const rect = orbRef.current.getBoundingClientRect();
+                  // Map cursor to inner circle coords (128px circle starts at p-1.5 = 6px offset)
+                  const innerSize = 128;
+                  rawX.set(e.clientX - rect.left - 6);
+                  rawY.set(e.clientY - rect.top - 6);
+                }}
+              >
+                {/* Outer ambient glow */}
+                <motion.div
+                  className="absolute -inset-12 rounded-full blur-3xl pointer-events-none"
+                  animate={{
+                    opacity: orbHovered ? 1 : 0.4,
+                    background: "rgba(59,130,246,0.18)",
+                  }}
+                  transition={{ duration: 0.5 }}
+                />
+
+                {/* Ripple rings on hover */}
+                <AnimatePresence>
+                  {orbHovered &&
+                    [0, 0.5, 1.0].map((delay, i) => (
+                      <motion.span
+                        key={i}
+                        className="absolute rounded-full border border-blue-400/15 pointer-events-none"
+                        style={{
+                          top: "50%", left: "50%",
+                          width: "128px", height: "128px",
+                          marginTop: "-64px", marginLeft: "-64px",
+                        }}
+                        initial={{ scale: 1, opacity: 0.45 }}
+                        animate={{ scale: 2.4 + i * 0.4, opacity: 0 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 1.8, repeat: Infinity, delay, ease: "easeOut" }}
+                      />
+                    ))}
+                </AnimatePresence>
+
+                {/* Ring border — no scale change */}
+                <motion.div
+                  className="relative h-32 w-32 rounded-full p-[6px] overflow-hidden"
+                  animate={{
+                    backgroundColor: "#1a2030",
+                    boxShadow: orbHovered
+                      ? "0 0 32px rgba(59,130,246,0.25), 0 0 0 1px rgba(96,165,250,0.15)"
+                      : "inset 0 2px 8px rgba(0,0,0,0.6)",
+                  }}
+                  transition={{ duration: 0.35, ease: "easeOut" }}
+                >
+                  {/* Inner circle with watery gradient overlay */}
+                  <div className="relative bg-black h-full w-full overflow-hidden rounded-full">
+                    {/* Orb base layer */}
+                    <div className="absolute inset-0">
+                      <Orb colors={BLUE_ORB} seed={1000} theme="dark" />
+                    </div>
+
+                    {/* Watery fluid layer — spring-driven, no re-render */}
+                    <motion.div
+                      className="absolute inset-0 rounded-full pointer-events-none"
+                      style={{
+                        background: waterGradient,
+                        mixBlendMode: "screen",
+                        opacity: orbHovered ? 1 : 0,
+                        transition: "opacity 0.4s ease",
+                      }}
+                    />
+
+                    {/* Second softer wave layer — slightly offset spring for depth */}
+                    <motion.div
+                      className="absolute inset-0 rounded-full pointer-events-none"
+                      style={{
+                        background: useTransform(
+                          [springX, springY],
+                          ([x, y]: number[]) =>
+                            `radial-gradient(ellipse 55% 45% at ${128 - (x as number)}px ${128 - (y as number)}px,
+                              rgba(96,165,250,0.25) 0%,
+                              rgba(59,130,246,0.08) 45%,
+                              transparent 70%)`,
+                        ),
+                        mixBlendMode: "screen",
+                        opacity: orbHovered ? 0.7 : 0,
+                        transition: "opacity 0.4s ease",
+                      }}
                     />
                   </div>
-                </div>
+                </motion.div>
+
+                {/* ACTIVE badge */}
+                <motion.div
+                  className="absolute -bottom-7 w-full flex justify-center pointer-events-none"
+                  animate={{ opacity: orbHovered ? 1 : 0, y: orbHovered ? 0 : 4 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <span className="inline-flex items-center gap-1 text-[10px] text-blue-400/70 font-semibold tracking-widest uppercase">
+                    <span className="w-1 h-1 rounded-full bg-blue-400 animate-pulse" />
+                    Active
+                  </span>
+                </motion.div>
               </div>
             </div>
 

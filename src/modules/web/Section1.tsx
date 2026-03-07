@@ -267,18 +267,19 @@ const Section1 = () => {
                     { month: "Apr", height: 116, label: "34/wk" },
                     { month: "May", height: 128, label: "42/wk" },
                   ].map((bar, i) => (
-                    <div key={bar.month} className="flex-1 flex flex-col items-center gap-2 relative z-10 h-full justify-end">
+                    <div key={bar.month} className="group flex-1 flex flex-col items-center gap-2 relative z-10 h-full justify-end cursor-pointer">
                       <motion.div
                         initial={{ height: 0, opacity: 0 }}
                         whileInView={{ height: bar.height, opacity: 1 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6, delay: 0.3 + i * 0.1, ease: "easeOut" }}
-                        className="w-full max-w-[40px] rounded-t-xl bg-gradient-to-t from-blue-600 to-blue-400 relative group cursor-pointer"
+                        className="w-full max-w-[40px] rounded-t-xl bg-gradient-to-t from-blue-600 to-blue-400 relative"
                       >
                         {/* Glow effect on hover */}
-                        <div className="absolute inset-0 rounded-t-xl bg-blue-400 opacity-0 group-hover:opacity-30 transition-opacity duration-300 blur-sm" />
+                        <div className="absolute inset-0 rounded-t-xl bg-blue-400 opacity-0 group-hover:opacity-40 transition-opacity duration-300 blur-sm" />
+                        <div className="absolute inset-0 rounded-t-xl ring-1 ring-blue-400/0 group-hover:ring-blue-400/60 transition-all duration-300" />
                       </motion.div>
-                      <span className="text-[10px] text-neutral-500 font-medium">{bar.month}</span>
+                      <span className="text-[10px] text-neutral-500 group-hover:text-blue-400 transition-colors duration-300 font-medium">{bar.month}</span>
                     </div>
                   ))}
                 </div>
@@ -442,7 +443,13 @@ const Section1 = () => {
                   className="mt-5 flex items-center gap-2"
                 >
                   <div className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
-                  <span className="text-[11px] text-neutral-500">+ more integrations via MCP servers</span>
+                    <motion.span
+                      animate={{ color: ["#737373", "#60a5fa", "#3b82f6", "#60a5fa", "#737373"] }}
+                      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                      className="text-[11px] font-medium"
+                    >
+                      + more integrations via MCP servers
+                    </motion.span>
                 </motion.div>
               </div>
             </div>
@@ -505,7 +512,8 @@ const Section1 = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.4 + i * 0.1 }}
-                    className="flex items-center gap-3 px-3.5 py-2.5 rounded-lg border border-white/[0.04] bg-white/[0.02]"
+                    whileHover={{ scale: 1.02 }}
+                    className="flex items-center gap-3 px-3.5 py-2.5 rounded-lg border border-white/[0.04] bg-white/[0.02] hover:border-blue-500/25 hover:bg-blue-500/[0.05] transition-all duration-300 cursor-pointer"
                   >
                     {/* Avatar */}
                     <img

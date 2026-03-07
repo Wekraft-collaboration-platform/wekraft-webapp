@@ -12,7 +12,6 @@ import {
   CheckCircle2,
   GitPullRequest,
   AlertTriangle,
-  Target,
   Clock,
   Sparkles,
   Flag,
@@ -96,8 +95,8 @@ const SkillMatchingUI = () => (
   </div>
 );
 
-// ── col config: 8 columns, "Today" sits at col index 4 (0-based) ──
-const COLS = ["S 13", "M 14", "T 15", "W 16", "T 17", "F 18", "S 19", "S 20"];
+// ── col config: 7 columns, "Today" sits at col index 3 (0-based) ──
+const COLS = ["S 13", "M 14", "T 15", "W 16", "T 17", "F 18", "S 19"];
 const TODAY_COL = 3; // W 16
 
 const tasks = [
@@ -140,7 +139,7 @@ const tasks = [
     tag: "UI Design",
     days: "3 Days",
     colStart: 5,
-    colSpan: 3,
+    colSpan: 2,
     status: "pending",
     accent: "#6b7280",
     avatars: ["https://i.pravatar.cc/28?img=14"],
@@ -297,20 +296,6 @@ const TimelineTrackingUI = () => {
           ))}
         </div>
       </div>
-
-      {/* ── Agent insight bar ── */}
-      <motion.div
-        initial={{ opacity: 0, y: 6 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.8 }}
-        className="mt-5 flex items-center gap-2 px-3 py-2 rounded-lg bg-blue-500/[0.05] border border-blue-500/10"
-      >
-        <Target className="w-3 h-3 text-blue-400 shrink-0" />
-        <span className="text-[10px] text-neutral-400">
-          <span className="text-blue-400 font-semibold">WeKraft Agent:</span> On track to ship 2 days early. No blockers detected.
-        </span>
-      </motion.div>
     </div>
   );
 };

@@ -29,9 +29,9 @@ const Navbar = () => {
   return (
     <header
       className={clsx(
-        "fixed top-2 left-1/2 -translate-x-1/2 z-50  transition-all duration-300 ease-linear",
+        "fixed top-2 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 ease-linear",
         scrolled
-          ? "bg-white/15 backdrop-blur-md shadow-lg max-w-3xl w-full rounded-xl"
+          ? "bg-black/30 backdrop-blur-xl shadow-[0_4px_24px_rgba(0,0,0,0.15)] border border-white/[0.08] max-w-3xl w-full rounded-xl"
           : "bg-transparent w-full"
       )}
     >
@@ -77,7 +77,7 @@ const Navbar = () => {
           variant={'outline'}
           onClick={() => document.getElementById('footer')?.scrollIntoView({ behavior: 'smooth' })}
           className={clsx(
-            "duration-300 hover:scale-105 transition-all cursor-pointer font-inter text-sm text-white bg-transparent border border-white/30",
+            "duration-300 hover:scale-105 transition-all cursor-pointer font-inter text-sm text-white bg-transparent border border-white/30 hover:bg-white/10",
             scrolled && "px-4 py-1.5 text-xs"
           )}
         >

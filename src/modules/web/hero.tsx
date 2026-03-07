@@ -9,7 +9,6 @@ import {
   ArrowRightIcon,
   LaptopMinimalCheck,
   LucideRocket,
-  LucideTrendingUp,
   MousePointerBan,
 } from "lucide-react";
 import Image from "next/image";
@@ -123,14 +122,9 @@ const Hero = () => {
           <h1 className="text-8xl leading-[1.40] bg-linear-to-b from-white via-white to-neutral-800 bg-clip-text text-transparent font-semibold ">
             Build <span className="">Together</span>
           </h1>
-          <div className="flex items-center gap-4 -mt-4">
-            <h1 className="text-8xl leading-[1.15] bg-linear-to-b from-white via-white to-neutral-800 bg-clip-text text-transparent font-semibold ">
-              Craft <span className="">Faster</span>
-            </h1>
-            <div className="self-center -mb-4 w-12 h-12 flex items-center justify-center rounded-lg bg-linear-to-br from-blue-300 to-blue-700">
-              <LucideTrendingUp className="w-10 h-10 text-white" />
-            </div>
-          </div>
+          <h1 className="text-8xl leading-[1.15] bg-linear-to-b from-white via-white to-neutral-800 bg-clip-text text-transparent font-semibold -mt-4">
+            Craft <span className="">Faster</span>
+          </h1>
 
           <FloatingCursor
             name="Ritesh"
