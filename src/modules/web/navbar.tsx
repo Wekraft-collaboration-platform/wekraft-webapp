@@ -12,7 +12,6 @@ const navLinks: { label: string; href: string }[] = [
   { label: "Home", href: "/" },
   { label: "Pricing", href: "/pricing" },
   { label: "Reach us", href: "/reach-us" },
-  { label: "Docs", href: "/" },
   { label: "About us", href: "/about-us" },
 ];
 

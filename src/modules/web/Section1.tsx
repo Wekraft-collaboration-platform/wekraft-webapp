@@ -472,7 +472,7 @@ const Section1 = () => {
                 Never Miss your deadlines
               </h3>
               <p className="text-neutral-500 text-sm leading-relaxed mb-8">
-                Never let any features to be left behind. wekraft help teams
+                Never let any features to be left behind. WeKraft help teams
                 track progress & adjust work before they fall behind.
               </p>
 
