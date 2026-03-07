@@ -84,12 +84,12 @@ const freeFeatures: FeatureItem[] = [
 ];
 
 const proFeatures: FeatureItem[] = [
-  { label: "5 project creations",          icon: <FolderGit2      className="h-3.5 w-3.5" /> },
+  { label: "Unlimited project creations",          icon: <FolderGit2      className="h-3.5 w-3.5" /> },
   { label: "5 project joinings",           icon: <UserPlus        className="h-3.5 w-3.5" /> },
   { label: "Higher limits on AI reviews",  icon: <Cpu             className="h-3.5 w-3.5" /> },
-  { label: "Full PM Agent",                icon: <Bot             className="h-3.5 w-3.5" /> },
+  { label: "PM Agent Pro",                icon: <Bot             className="h-3.5 w-3.5" /> },
   { label: "Advanced team analytics",      icon: <BarChart3       className="h-3.5 w-3.5" /> },
-  { label: "Repo heatmap",                 icon: <Map             className="h-3.5 w-3.5" /> },
+  { label: "Advance Heatmap",                 icon: <Map             className="h-3.5 w-3.5" /> },
   { label: "Priority support",             icon: <Star            className="h-3.5 w-3.5" /> },
 ];
 
@@ -97,7 +97,7 @@ const studioFeatures: FeatureItem[] = [
   { label: "Everything in Pro",          icon: <BadgeCheck      className="h-3.5 w-3.5" /> },
   { label: "Unlimited projects & teams", icon: <FolderGit2      className="h-3.5 w-3.5" /> },
   { label: "Custom arrangements",        icon: <Wrench          className="h-3.5 w-3.5" /> },
-  { label: "Dedicated onboarding",       icon: <CalendarCheck   className="h-3.5 w-3.5" /> },
+  { label: "Dedicated Feature requests",       icon: <CalendarCheck   className="h-3.5 w-3.5" /> },
   { label: "SLA guarantee",              icon: <BadgeCheck      className="h-3.5 w-3.5" /> },
   { label: "Dedicated support channel",  icon: <HeadphonesIcon  className="h-3.5 w-3.5" /> },
 ];
@@ -122,7 +122,7 @@ const plans: Plan[] = [
     badge: "Most Popular",
     priceLabel: "TBA",
     priceSub: "Pricing revealed at launch",
-    description: "Everything serious builders need — AI-powered PM, code reviews, analytics, and more.",
+    description: "Everything serious builders need —  Intelligent PM, code reviews, analytics, and more.",
     cta: "Join Waitlist",
     ctaHref: "/web/reach-us",
     highlighted: true,
@@ -134,7 +134,7 @@ const plans: Plan[] = [
     name: "Studio",
     priceLabel: "Custom",
     priceSub: "Talk to us",
-    description: "Built for product studios and larger teams that need scale, control, and dedicated care.",
+    description: "Built for Large teams that need scale, control, and dedicated care.",
     cta: "Talk to us",
     ctaHref: "/web/reach-us",
     highlighted: false,
@@ -246,7 +246,7 @@ const FaqItem = ({ q, a, idx }: { q: string; a: string; idx: number }) => {
     >
       <button
         onClick={() => setOpen((o) => !o)}
-        className="w-full flex items-center justify-between py-4 text-left group"
+        className="w-full flex items-center justify-between py-4 text-left group cursor-pointer"
       >
         <span className="text-sm font-medium text-white/70 group-hover:text-white transition-colors pr-8">
           {q}
@@ -282,170 +282,142 @@ const FaqItem = ({ q, a, idx }: { q: string; a: string; idx: number }) => {
 
 const Pricing = () => {
   return (
-    <div className="bg-black min-h-screen w-full selection:bg-blue-500/20">
+    <div className="bg-[#050505] min-h-screen w-full selection:bg-white/20 font-sans antialiased relative overflow-hidden">
+      
+      {/* ── Background Grid & Glow ── */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        <div 
+          style={{ 
+            backgroundImage: "linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px)", 
+            backgroundSize: "48px 48px" 
+          }} 
+          className="absolute inset-0"
+        />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-white/[0.03] blur-[100px] rounded-full" />
+      </div>
 
       {/* ── Hero ── */}
-      <section className="relative pt-28 pb-20 px-4">
-        <div className="absolute inset-0 z-0 opacity-[0.06]">
-          <div className="h-full w-full bg-[linear-gradient(to_right,#ffffff10_1px,transparent_1px),linear-gradient(to_bottom,#ffffff10_1px,transparent_1px)] bg-size-[40px_40px]" />
-        </div>
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-150 h-87.5 bg-blue-600/8 blur-[100px] pointer-events-none rounded-full" />
+      <section className="relative pt-30 pb-12 px-4 z-10 flex flex-col items-center">
+        
+        <motion.h1
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+          className="text-5xl md:text-7xl font-medium tracking-tight text-center text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-gray-500 mb-6 leading-tight max-w-4xl"
+        >
+          Plans That Scale<br /> With You
+        </motion.h1>
 
-        <div className="relative z-10 max-w-3xl mx-auto text-center pt-8">
-          <motion.div
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="mb-5 inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-1.5 text-[11px] font-semibold text-blue-300 tracking-widest uppercase"
-          >
-            <Sparkles className="h-3 w-3" />
-            Flexible Plans
-          </motion.div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.08 }}
-            className="text-4xl md:text-[56px] font-bold tracking-tight text-white mb-4 leading-[1.1]"
-          >
-            Build together.
-            <br />
-            <span className="text-blue-400">Pay when it counts.</span>
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.15 }}
-            className="text-white/45 text-base max-w-md mx-auto mb-8"
-          >
-            Start free, grow with your team. Pricing unlocks at launch — early members get founding rates.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.25 }}
-            className="inline-flex items-center gap-2.5 rounded-full border border-white/8 bg-white/4 px-5 py-2 backdrop-blur-sm"
-          >
-            <Sparkles className="w-3.5 h-3.5 text-blue-400" />
-            <span className="text-sm text-white/50">
-              Pricing will be disclosed at launch — early members get founding rates
-            </span>
-          </motion.div>
-        </div>
+        <motion.p
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="text-base text-gray-400 text-center mb-12 max-w-lg font-normal leading-relaxed"
+        >
+          Start free, grow with your team. Pricing unlocks at launch.<br/> Early members get founding rates.
+        </motion.p>
       </section>
 
       {/* ── Pricing Cards ── */}
-      <section className="max-w-5xl mx-auto px-4 pb-24">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {plans.map((plan, idx) => (
-            <motion.div
-              key={plan.key}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.08 * idx }}
-              className={cn(
-                "relative flex flex-col rounded-2xl border p-6 transition-all duration-300 hover:-translate-y-0.5",
-                plan.highlighted
-                  ? "bg-linear-to-b from-[#0f1b35] to-[#080d1a] border-blue-500/30 shadow-[0_0_50px_rgba(37,99,235,0.08)]"
-                  : "bg-linear-to-b from-[#111116] to-[#0a0a0e] border-white/6 hover:border-white/10",
-              )}
-            >
-              {/* Popular badge */}
-              {plan.badge && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-white bg-blue-600 rounded-full px-3.5 py-1 shadow-[0_0_16px_rgba(37,99,235,0.5)]">
-                    {plan.badge}
-                  </span>
-                </div>
-              )}
-
-              {/* Header row */}
-              <div className="flex items-center justify-between mb-3">
-                <div className="flex items-center gap-2.5">
-                  <div className={cn(
-                    "h-7 w-7 rounded-lg flex items-center justify-center border",
-                    plan.highlighted
-                      ? "bg-blue-500/15 border-blue-400/25 text-blue-400"
-                      : "bg-white/5 border-white/8 text-white/35",
-                  )}>
-                    {plan.icon}
-                  </div>
-                  <span className="font-semibold text-white text-base">{plan.name}</span>
-                </div>
-              </div>
-
-              {/* Price */}
-              <div className="mb-3">
-                <div className={cn(
-                  "text-3xl font-bold",
-                  plan.key === "team" ? "text-blue-300" : "text-white"
-                )}>
-                  {plan.priceLabel}
-                </div>
-                {plan.priceSub && (
-                  <p className={cn(
-                    "text-[11px] font-semibold uppercase tracking-wider mt-0.5",
-                    plan.key === "team" ? "text-blue-400/70" : "text-white/30"
-                  )}>
-                    {plan.priceSub}
-                  </p>
+      <section className="max-w-7xl mx-auto px-4 pb-12 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-6xl mx-auto">
+          {plans.map((plan, idx) => {
+            const isHighlighted = plan.key === "team";
+            return (
+              <motion.div
+                key={plan.key}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ y: -4, scale: 1.02 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.2 }}
+                className={cn(
+                  "relative p-6 md:p-7 rounded-[32px] backdrop-blur-xl flex flex-col group transition-all duration-500",
+                  "bg-[#0a0a0a]/90 hover:bg-[#0a0a0a]/70 border border-white/10 shadow-2xl transition-all",
+                  "hover:shadow-[0_0_24px_-10px_rgba(255,255,255,0.15)] hover:z-40 hover:border-white/40",
+                  isHighlighted ? "scale-100 md:scale-105 z-10" : "z-0"
                 )}
-              </div>
-
-              <p className="text-[13px] text-white/35 leading-relaxed mb-5">
-                {plan.description}
-              </p>
-
-              {/* CTA */}
-              <Link href={plan.ctaHref} className="mb-5 z-10">
-                <Button
-                  className={cn(
-                    "w-full rounded-xl h-10 text-sm font-semibold transition-all duration-300",
-                    plan.highlighted
-                      ? "bg-blue-600 hover:bg-blue-500 text-white shadow-[0_0_24px_rgba(37,99,235,0.25)]"
-                      : "bg-white/6 hover:bg-white/12 text-white/80 border border-white/8",
-                  )}
-                >
-                  {plan.cta}
-                </Button>
-              </Link>
-
-              {/* Divider */}
-              <div className="h-px w-full bg-white/5 mb-4" />
-
-              {/* Features */}
-              <p className="text-[10px] font-bold uppercase tracking-widest text-white/25 mb-3">
-                What you get
-              </p>
-              <ul className="flex flex-col gap-2.5">
-                {plan.features.map((f) => (
-                  <li key={f.label} className="flex items-center gap-2.5 text-[13px] text-white/55">
-                    <span className={cn(
-                      "shrink-0",
-                      plan.highlighted ? "text-blue-400" : "text-white/30"
+              >
+                {/* Inner subtle highlight/gradient */}
+                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent rounded-t-3xl" />
+                <div className="absolute inset-0 bg-gradient-to-b from-white/[0.02] to-transparent rounded-[32px] pointer-events-none" />
+                
+                <div className="relative z-10 flex flex-col h-full">
+                  {/* Header row */}
+                  <div className="flex items-center gap-3 mb-5">
+                    <div className={cn(
+                      "p-1.5 rounded-lg border shadow-sm transition-colors duration-500",
+                      "bg-white text-black border-white"
                     )}>
-                      {f.icon}
+                      {plan.icon}
+                    </div>
+                    <span className="text-lg font-medium tracking-tight text-gray-100">{plan.name}</span>
+                    {plan.badge && (
+                      <span className="ml-auto bg-white/10 text-white text-[10px] px-2 py-0.5 rounded-full font-medium tracking-wide">
+                        {plan.badge}
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Price */}
+                  <div className="flex items-baseline gap-1 mb-2">
+                    <span className="text-4xl font-medium tracking-tight text-white">{plan.priceLabel}</span>
+                    {plan.priceLabel !== "TBA" && plan.priceLabel !== "Custom" && (
+                      <span className="text-sm text-gray-500 font-normal">/month</span>
+                    )}
+                  </div>
+
+                  {/* Description */}
+                  <p className="text-sm text-gray-400 mb-5 min-h-[2.5rem] font-normal leading-relaxed group-hover:text-gray-300 transition-colors duration-500">
+                    {plan.description}
+                  </p>
+
+                  {/* CTA Button */}
+                  <Link href={plan.ctaHref} className="w-full mb-6 block">
+                    <button
+                      className={cn(
+                        "w-full py-2 px-4 rounded-full font-medium text-sm transition-all duration-300 shadow-sm flex items-center justify-center gap-2 cursor-pointer",
+                        "bg-[#1c1c1c] border border-white/10 text-gray-100 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] hover:bg-white hover:text-black"
+                      )}
+                    >
+                      {plan.cta}
+                    </button>
+                  </Link>
+
+                  {/* Features / 14 days note row */}
+                  <ul className="space-y-2 mb-6 flex-grow">
+                    {plan.features.map((f) => (
+                      <li key={f.label} className="flex items-start gap-3 text-sm text-gray-400 group-hover:text-gray-300 font-normal transition-colors duration-500">
+                        <div className="mt-0.5 flex-shrink-0 flex items-center justify-center w-4.5 h-4.5 rounded-full bg-white/5 border border-white/5 transition-colors duration-500 group-hover:bg-white/10">
+                          <Check className="w-3 h-3 text-white/50 group-hover:text-white" strokeWidth={2.5} />
+                        </div>
+                        <span className="line-clamp-1">{f.label}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  
+                  {/* Small Footer/Note */}
+                  <div className="pt-4 border-t border-white/5">
+                    <span className="text-xs text-gray-600 font-normal group-hover:text-gray-500 transition-colors">
+                      {plan.priceSub || "14 days free trial"}
                     </span>
-                    {f.label}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          ))}
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
       </section>
 
       {/* ── Feature Table ── */}
-      <section className="max-w-5xl mx-auto px-4 pb-28">
+      <section className="max-w-6xl mx-auto px-4 pt-20 pb-10 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <p className="text-[10px] font-bold uppercase tracking-widest text-blue-400/70 mb-3">
+          <p className="text-[10px] font-bold uppercase tracking-widest text-[#A0A5B5] mb-3">
             Compare Plans
           </p>
           <h2 className="text-2xl md:text-3xl font-semibold text-white tracking-tight">
@@ -453,91 +425,103 @@ const Pricing = () => {
           </h2>
         </motion.div>
 
-        <div className="rounded-2xl border border-white/5 overflow-hidden bg-linear-to-b from-[#0e0e13] to-[#08080b]">
-          {/* Table header */}
-          <div className="grid grid-cols-4 border-b border-white/5">
-            <div className="p-4 text-[10px] font-bold uppercase tracking-widest text-white/25">
-              Feature
-            </div>
-            {plans.map((p) => (
-              <div
-                key={p.key}
-                className={cn(
-                  "p-4 text-center text-sm font-semibold",
-                  p.highlighted ? "text-blue-400" : "text-white/50",
-                )}
-              >
-                {p.name}
+        <div className="rounded-[32px] border border-white/20 overflow-hidden bg-[#0a0a0a]/70 backdrop-blur-3xl shadow-[0_20px_100px_-10px_rgba(255,255,255,0.18)] relative">
+          <div className="absolute inset-0 bg-gradient-to-b from-white/[0.08] to-transparent pointer-events-none" />
+          
+          <div className="relative z-10 overflow-x-auto">
+            {/* Table header - Sticky */}
+            <div className="grid grid-cols-4 border-b border-white/[0.08] bg-[#0a0a0a]/90 backdrop-blur-md sticky top-0 z-20">
+              <div className="py-2 px-5 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-500 flex items-center">
+                Comparison
               </div>
-            ))}
-          </div>
-
-          {/* Table body */}
-          {featureCategories.map((cat, catIdx) => (
-            <div key={catIdx}>
-              <div className="grid grid-cols-4 border-b border-white/5">
-                <div className="col-span-4 px-4 py-2.5 flex items-center gap-2 bg-white/2">
-                  <span className="text-blue-400/60">{cat.icon}</span>
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-white/25">
-                    {cat.title}
-                  </span>
-                </div>
-              </div>
-
-              {cat.rows.map((row, rowIdx) => (
+              {plans.map((p) => (
                 <div
-                  key={rowIdx}
-                  className="grid grid-cols-4 border-b border-white/[0.035] last:border-0 hover:bg-white/1.5 transition-colors"
+                  key={p.key}
+                  className={cn(
+                    "py-2 px-5 text-center text-sm font-semibold tracking-tight",
+                    p.highlighted ? "text-white" : "text-gray-400",
+                  )}
                 >
-                  <div className="flex items-center gap-2.5 px-4 py-3.5 text-[13px] text-white/45">
-                    <span className="text-white/20 shrink-0">{row.icon}</span>
-                    {row.label}
-                  </div>
-                  <div className="flex items-center justify-center px-4 py-3.5 border-l border-white/[0.035]">
-                    <FeatureValue value={row.hobby} />
-                  </div>
-                  <div className="flex items-center justify-center px-4 py-3.5 border-l border-white/[0.035] bg-blue-500/2.5">
-                    <FeatureValue value={row.team} />
-                  </div>
-                  <div className="flex items-center justify-center px-4 py-3.5 border-l border-white/[0.035]">
-                    <FeatureValue value={row.studio} />
-                  </div>
+                  {p.name}
                 </div>
               ))}
             </div>
-          ))}
+
+            {/* Table body */}
+            {featureCategories.map((cat, catIdx) => (
+              <div key={catIdx}>
+                {/* Category Header */}
+                <div className="grid grid-cols-4 border-b border-white/[0.06] bg-[#050505]">
+                  <div className="col-span-4 px-6 py-1.5 flex items-center gap-3">
+                    <div className="p-1.5 rounded-lg bg-white/5 border border-white/10 text-white">
+                      {cat.icon}
+                    </div>
+                    <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-white/90">
+                      {cat.title}
+                    </span>
+                  </div>
+                </div>
+
+                {cat.rows.map((row, rowIdx) => (
+                  <div
+                    key={rowIdx}
+                    className="grid grid-cols-4 border-b border-white/[0.03] last:border-0 hover:bg-white/[0.03] transition-all duration-300 group/row"
+                  >
+                    <div className="flex items-center gap-4 px-6 py-1.5 text-[13px] text-gray-400 group-hover/row:text-gray-200 transition-colors">
+                      <div className="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-lg bg-white/5 border border-white/5 group-hover/row:bg-white group-hover/row:text-black transition-all">
+                        {React.isValidElement(row.icon) && React.cloneElement(row.icon as React.ReactElement<any>, { className: "h-3.5 w-3.5" })}
+                      </div>
+                      <span className="font-normal tracking-wide">{row.label}</span>
+                    </div>
+                    <div className="flex items-center justify-center px-6 py-1.5 border-l border-white/[0.03]">
+                      <FeatureValue value={row.hobby} />
+                    </div>
+                    <div className="flex items-center justify-center px-6 py-1.5 border-l border-white/[0.03] bg-white/[0.01]">
+                      <FeatureValue value={row.team} />
+                    </div>
+                    <div className="flex items-center justify-center px-6 py-1.5 border-l border-white/[0.03]">
+                      <FeatureValue value={row.studio} />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* ── FAQ ── */}
-      <section className="max-w-2xl mx-auto px-4 pb-28">
+      <section className="max-w-3xl mx-auto px-4 pt-10 pb-20 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-10"
+          className="text-center mb-12"
         >
-          <p className="text-[10px] font-bold uppercase tracking-widest text-blue-400/70 mb-3">
+          <p className="text-[20px] font-bold uppercase tracking-widest text-[#A0A5B5] mb-3">
             FAQ
           </p>
-          <h2 className="text-2xl md:text-3xl font-semibold text-white tracking-tight mb-3">
+          <h2 className="text-3xl md:text-4xl font-semibold text-white tracking-tight mb-4">
             Common questions
           </h2>
-          <p className="text-white/35 text-sm">
+          <p className="text-gray-400 text-sm font-normal">
             Can&apos;t find your answer?{" "}
             <a
               href="mailto:contact@wekraft.com"
-              className="text-blue-400 hover:text-blue-300 transition-colors underline underline-offset-2"
+              className="text-white hover:text-gray-300 transition-colors underline underline-offset-4"
             >
-              Ask us directly.
+              Ask us directly
             </a>
           </p>
         </motion.div>
 
-        <div className="rounded-2xl border border-white/5 bg-linear-to-b from-[#0e0e13] to-[#08080b] px-6">
-          {faqs.map((faq, idx) => (
-            <FaqItem key={idx} q={faq.q} a={faq.a} idx={idx} />
-          ))}
+        <div className="rounded-[32px] border border-white/[0.08] bg-[#111111]/80 backdrop-blur-xl px-8 shadow-2xl relative">
+          <div className="absolute inset-0 bg-gradient-to-b from-white/[0.02] to-transparent pointer-events-none rounded-[32px]" />
+          <div className="relative z-10">
+            {faqs.map((faq, idx) => (
+              <FaqItem key={idx} q={faq.q} a={faq.a} idx={idx} />
+            ))}
+          </div>
         </div>
       </section>
     </div>
