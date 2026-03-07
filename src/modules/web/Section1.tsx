@@ -21,6 +21,7 @@ import {
   ArrowRight,
   Timer,
   TrendingUp,
+  LucideLayers3,
 } from "lucide-react";
 
 export const fadeUp = {
@@ -212,7 +213,7 @@ const Section1 = () => {
             <div className="relative z-10 flex-1 flex flex-col">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center border border-blue-500/20">
-                  <Zap className="w-4 h-4 text-blue-400" />
+                  <LucideLayers3 className="w-4 h-4 text-blue-400" />
                 </div>
                 <span className="text-xs font-semibold text-neutral-500 uppercase tracking-widest">
                   Automation
@@ -505,7 +506,7 @@ const Section1 = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.4 + i * 0.1 }}
-                    className="flex items-center gap-3 px-3.5 py-2.5 rounded-lg border border-white/[0.04] bg-white/[0.02]"
+                    className="flex items-center gap-3 px-3.5 py-2.5 rounded-lg border border-white/[0.04] bg-white/[0.02] hover:bg-neutral-200/10"
                   >
                     {/* Avatar */}
                     <img

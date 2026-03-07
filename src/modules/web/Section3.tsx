@@ -93,6 +93,7 @@ const Section3 = () => {
   return (
     <motion.div
       ref={containerRef}
+      id="section3"
       style={{ y: yShift, opacity }}
       className="relative w-full bg-[#FAFAF9] z-20 py-24 md:py-32 px-6 md:px-12 lg:px-20 rounded-t-[3rem] shadow-[0_-40px_80px_rgba(0,0,0,0.12)]"
     >

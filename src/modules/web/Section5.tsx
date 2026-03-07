@@ -39,14 +39,11 @@ const GlassPlatform = ({
       >
         {/* The glass rhombus platform */}
         <div
-          className="relative"
+          className="relative w-[180px] h-[150px] md:w-[220px] md:h-[190px]"
           style={{
-            width: "220px",
-            height: "190px",
             perspective: "1200px",
           }}
         >
-          {/* Glass slab — transformed into a tilted rhombus shape */}
           <div
             style={{
               position: "absolute",
@@ -106,9 +103,9 @@ const FloatingCards = () => {
       <Image
       src="/logo.svg"
       alt="Wekraft Logo"
-      width={52}
-      height={52}
-      className="drop-shadow-[0_0_20px_rgba(59,130,246,0.3)] opacity-90"
+      width={42}
+      height={42}
+      className="w-10 h-10 md:w-[52px] md:h-[52px] drop-shadow-[0_0_20px_rgba(59,130,246,0.3)] opacity-90"
       />
       </GlassPlatform>
 
@@ -117,9 +114,9 @@ const FloatingCards = () => {
       <Image
       src="/github.png"
       alt="Wekraft Logo"
-      width={52}
-      height={52}
-      className="drop-shadow-[0_0_20px_rgba(59,130,246,0.3)] opacity-90"
+      width={42}
+      height={42}
+      className="w-10 h-10 md:w-[52px] md:h-[52px] drop-shadow-[0_0_20px_rgba(59,130,246,0.3)] opacity-90"
       />
       </GlassPlatform>
 
@@ -128,9 +125,9 @@ const FloatingCards = () => {
           <Image
       src="/social.png"
       alt="Wekraft Logo"
-      width={52}
-      height={52}
-      className="drop-shadow-[0_0_20px_rgba(59,130,246,0.3)] opacity-90"
+      width={42}
+      height={42}
+      className="w-10 h-10 md:w-[52px] md:h-[52px] drop-shadow-[0_0_20px_rgba(59,130,246,0.3)] opacity-90"
       />
       </GlassPlatform>
     </div>
@@ -173,8 +170,8 @@ const Section5 = () => {
           <Image
             src="/logo.svg"
             alt="Wekraft Logo"
-            width={50}
-            height={50}
+            width={45}
+            height={45}
             className="drop-shadow-[0_0_20px_rgba(59,130,246,0.3)]"
           />
         </motion.div>
@@ -184,7 +181,7 @@ const Section5 = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-4xl font-pop font-semibold leading-[1.15] bg-linear-to-b from-white via-white to-neutral-500 bg-clip-text text-transparent max-w-2xl mx-auto"
+          className="text-3xl md:text-4xl font-pop font-semibold leading-[1.15] bg-linear-to-b from-white via-white to-neutral-500 bg-clip-text text-transparent max-w-2xl mx-auto"
         >
           Developer infrastructure
           <br />
@@ -209,13 +206,13 @@ const Section5 = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="shrink-0 w-[320px] flex items-center justify-center"
+          className="shrink-0 w-[280px] md:w-[320px] flex items-center justify-center -mb-10 md:mb-0"
         >
           <FloatingCards />
         </motion.div>
 
         {/* Right — text features, vertically aligned with cards */}
-        <div className="flex flex-col justify-between gap-16 md:py-0">
+        <div className="flex flex-col justify-between text-center md:text-left gap-12 md:gap-16 md:py-0">
           {features.map((f, i) => (
             <motion.div
               key={f.title}

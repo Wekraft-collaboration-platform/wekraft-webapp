@@ -63,7 +63,9 @@ const ReachUs = () => {
         body: JSON.stringify({ email, type: selected, subject, message }),
       }).catch((err) => console.error("[reach-us] fetch failed:", err));
 
-      toast.success("Message sent! We'll get back to you soon.", { id: toastId });
+      toast.success("Message sent! We'll get back to you soon.", {
+        id: toastId,
+      });
       setFormData({ email: "", subject: "", message: "" });
     } catch (err) {
       console.error(err);
@@ -73,15 +75,15 @@ const ReachUs = () => {
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     const { id, value } = e.target;
     setFormData((prev) => ({ ...prev, [id]: value }));
   };
 
   return (
     <div className="min-h-screen w-full bg-black pt-40 pb-32 px-6">
-
-
       <div className="relative z-10 max-w-xl mx-auto">
         {/* header */}
         <motion.div
@@ -112,9 +114,7 @@ const ReachUs = () => {
         >
           {/* reason chips */}
           <div className="flex flex-col gap-2">
-            <label className="text-base font-medium text-white">
-              Reason
-            </label>
+            <label className="text-base font-medium text-white">Reason</label>
             <div className="flex flex-wrap gap-2">
               {reasons.map((r) => {
                 const Icon = r.icon;
@@ -128,7 +128,7 @@ const ReachUs = () => {
                       "inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium border transition-all duration-200",
                       active
                         ? "bg-blue-300/10 border-blue-500/30 text-white"
-                        : "bg-transparent border-white/5 text-white/30 hover:text-white/50 hover:border-white/10"
+                        : "bg-transparent border-white/5 text-white/30 hover:text-white/50 hover:border-white/10",
                     )}
                   >
                     <Icon className="w-3 h-3" />
@@ -141,9 +141,7 @@ const ReachUs = () => {
 
           {/* email */}
           <div className="flex flex-col gap-2">
-            <label className="text-base font-medium  text-white">
-              Email
-            </label>
+            <label className="text-base font-medium  text-white">Email</label>
             <div className="relative">
               <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-white/20" />
               <Input
@@ -160,9 +158,7 @@ const ReachUs = () => {
 
           {/* subject */}
           <div className="flex flex-col gap-2">
-            <label className="text-base font-medium  text-white">
-              Subject
-            </label>
+            <label className="text-base font-medium  text-white">Subject</label>
             <Input
               id="subject"
               required
@@ -176,9 +172,7 @@ const ReachUs = () => {
 
           {/* message */}
           <div className="flex flex-col gap-2">
-            <label className="text-base font-medium  text-white">
-              Message
-            </label>
+            <label className="text-base font-medium  text-white">Message</label>
             <Textarea
               id="message"
               required
@@ -200,19 +194,10 @@ const ReachUs = () => {
               disabled={sending}
               className="h-8 px-4 bg-white text-black hover:bg-white/90 rounded-lg text-xs font-semibold transition-all duration-200 disabled:opacity-50"
             >
-              {sending ? (
-                <motion.div
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                >
-                  <Send className="w-3.5 h-3.5" />
-                </motion.div>
-              ) : (
-                <span className="flex items-center gap-1.5">
-                  Send message
-                  <ArrowRight className="w-3 h-3" />
-                </span>
-              )}
+              <span className="flex items-center gap-1.5">
+                Send message
+                <ArrowRight className="w-3 h-3" />
+              </span>
             </Button>
           </div>
         </motion.form>

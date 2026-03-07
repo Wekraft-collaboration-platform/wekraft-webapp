@@ -74,12 +74,12 @@ const Footer = () => {
           <Image
             src="/logo.svg"
             alt="Wekraft Logo"
-            width={50}
-            height={50}
+            width={45}
+            height={45}
             className="drop-shadow-2xl"
           />
-          <span className="text-white font-pop font-bold text-4xl tracking-tighter">
-            Wekraft
+          <span className="text-white font-pop font-semibold text-3xl md:text-4xl tracking-tighter">
+            WeKraft
           </span>
         </motion.div>
 
@@ -88,7 +88,7 @@ const Footer = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="text-5xl  font-semibold text-white leading-tight tracking-tight mb-12"
+          className="text-4xl md:text-5xl  font-semibold text-white leading-tight tracking-tight mb-12"
         >
           The Future of Web <br />
           Crafted {" "}
@@ -142,19 +142,19 @@ const Footer = () => {
 
         <div className="flex items-center flex-wrap text-neutral-200 justify-center gap-x-8 ">
           <Link
-            href="mailto:contact@wekraft.com"
+            href="/reach-us"
             className="hover:text-white transition-colors flex items-center gap-2"
           >
             <Mail className="w-4 h-4" /> Contact Us
           </Link>
           <Link
-            href="https://github.com/wekraft"
+            href="https://github.com/Wekraft-collaboration-platform"
             className="hover:text-white transition-colors flex items-center gap-2"
           >
             <Github className="w-4 h-4" /> Star on GitHub
           </Link>
           <Link
-            href="/support"
+            href="/https://www.linkedin.com/in/rox-aa53a1300/"
             className="hover:text-white transition-colors flex items-center gap-2 text-white p-2 bg-blue-500/30 rounded-lg"
           >
             <Heart className="w-4 h-4" /> Support Creator

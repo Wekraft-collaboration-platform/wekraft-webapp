@@ -148,7 +148,7 @@ const featureCategories: FeatureCat[] = [
     title: "Projects & Teams",
     icon: <Users className="h-4 w-4" />,
     rows: [
-      { label: "Project creation", icon: <FolderGit2 className="h-3.5 w-3.5" />, hobby: "2", team: "5", studio: "Unlimited" },
+      { label: "Project creation", icon: <FolderGit2 className="h-3.5 w-3.5" />, hobby: "2", team: "Unlimited", studio: "Unlimited" },
       { label: "Project joining", icon: <UserPlus className="h-3.5 w-3.5" />, hobby: "2", team: "5", studio: "Unlimited" },
       { label: "Skill-based matching", icon: <Users2 className="h-3.5 w-3.5" />, hobby: true, team: true, studio: true },
       { label: "Community access", icon: <Globe className="h-3.5 w-3.5" />, hobby: true, team: true, studio: true },
@@ -181,7 +181,7 @@ const featureCategories: FeatureCat[] = [
     icon: <Lock className="h-4 w-4" />,
     rows: [
       { label: "Help & support", icon: <HeadphonesIcon className="h-3.5 w-3.5" />, hobby: "Limited", team: "Priority email", studio: "Dedicated" },
-      { label: "Onboarding session", icon: <CalendarCheck className="h-3.5 w-3.5" />, hobby: false, team: false, studio: true },
+      { label: "Onboarding session", icon: <CalendarCheck className="h-3.5 w-3.5" />, hobby: false, team: true, studio: true },
       { label: "SLA guarantee", icon: <BadgeCheck className="h-3.5 w-3.5" />, hobby: false, team: false, studio: true },
     ],
   },
@@ -303,7 +303,7 @@ const Pricing = () => {
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="text-5xl md:text-7xl font-medium tracking-tight text-center text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-gray-500 mb-6 leading-tight max-w-4xl"
+          className="text-4xl md:text-7xl font-medium tracking-tight text-center text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-gray-500 mb-6 leading-tight max-w-4xl"
         >
           Plans That Scale<br /> With You
         </motion.h1>

@@ -193,8 +193,51 @@ const Hero = () => {
                 Faster
               </span>
             </h1>
+
             <div className="hidden md:flex self-center -mb-4 w-12 h-12 items-center justify-center rounded-lg bg-linear-to-br from-blue-300 to-blue-700">
-              <LucideTrendingUp className="w-10 h-10 text-white" />
+              <div className="hidden md:flex  w-9 h-9 items-center justify-center rounded-lg">
+                <motion.svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.75"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="w-12 h-12 text-white drop-shadow-[0_0_9px_rgba(59,130,246,0.85)]"
+                  animate={{ opacity: [0, 1, 1, 0] }}
+                  transition={{
+                    duration: 1.5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    times: [0, 0.1, 0.8, 1],
+                  }}
+                >
+                  <motion.polyline
+                    points="2 17 8.5 10.5 13.5 15.5 22 7"
+                    animate={{ pathLength: [0, 1, 1] }}
+                    transition={{
+                      duration: 1.5,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      times: [0, 0.6, 1],
+                    }}
+                  />
+                  <motion.polyline
+                    points="16 7 22 7 22 13"
+                    animate={{
+                      pathLength: [0, 0, 1, 1],
+                      opacity: [0, 0, 1, 1],
+                    }}
+                    transition={{
+                      duration: 1.5,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      times: [0, 0.55, 0.65, 1],
+                    }}
+                  />
+                </motion.svg>
+              </div>
             </div>
           </div>
 
@@ -215,12 +258,12 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className="w-full md:w-220  mx-auto relative mt-5">
+        <div className="w-full text-center md:w-250  mx-auto relative mt-5 ">
           {/* Gradients */}
-          <div className="absolute inset-x-20 top-0 bg-linear-to-r from-transparent via-blue-500 to-transparent h-[2px] w-3/4 blur-sm" />
-          <div className="absolute inset-x-20 top-0 bg-linear-to-r from-transparent via-blue-500 to-transparent h-px w-3/4" />
-          <div className="absolute inset-x-60 top-0 bg-linear-to-r from-transparent via-sky-500 to-transparent h-[5px] w-1/4 blur-sm" />
-          <div className="absolute inset-x-60 top-0 bg-linear-to-r from-transparent via-blue-500 to-transparent h-px w-1/4" />
+          <div className="absolute left-1/2 -translate-x-1/2 top-0 bg-linear-to-r from-transparent via-blue-500 to-transparent h-[2px] w-3/4 blur-sm" />
+          <div className="absolute left-1/2 -translate-x-1/2 top-0 bg-linear-to-r from-transparent via-blue-500 to-transparent h-px w-3/4" />
+          <div className="absolute left-1/2 -translate-x-1/2 top-0 bg-linear-to-r from-transparent via-sky-500 to-transparent h-[5px] w-1/4 blur-sm" />
+          <div className="absolute left-1/2 -translate-x-1/2 top-0 bg-linear-to-r from-transparent via-blue-500 to-transparent h-px w-1/4" />
 
           <p className="text-neutral-300 md:text-neutral-400 text-base md:text-[20px] mt-5 font-sans tracking-tight text-pretty text-center px-4">
             AI agents that plan, assign, and track — autonomously. Collaborate
