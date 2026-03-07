@@ -267,7 +267,7 @@ const Hero = () => {
 
           <p className="text-neutral-300 md:text-neutral-400 text-base md:text-[20px] mt-5 font-sans tracking-tight text-pretty text-center px-4">
             AI agents that plan, assign, and track — autonomously. Collaborate
-            semalessly, real-time sync, zero deadline drift. Build together —
+            seamlessly, real-time sync, zero deadline drift. Build together —
             frictionless.
           </p>
 

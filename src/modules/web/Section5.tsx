@@ -98,11 +98,11 @@ const GlassPlatform = ({
 const FloatingCards = () => {
   return (
     <div className="relative flex flex-col items-center" style={{ gap: "0px" }}>
-      {/* Top platform — Wekraft icon */}
+      {/* Top platform — WeKraft icon */}
       <GlassPlatform index={0} delay={0}>
       <Image
       src="/logo.svg"
-      alt="Wekraft Logo"
+      alt="WeKraft Logo"
       width={42}
       height={42}
       className="w-10 h-10 md:w-[52px] md:h-[52px] drop-shadow-[0_0_20px_rgba(59,130,246,0.3)] opacity-90"
@@ -113,7 +113,7 @@ const FloatingCards = () => {
       <GlassPlatform index={1} delay={0.15}>
       <Image
       src="/github.png"
-      alt="Wekraft Logo"
+      alt="WeKraft Logo"
       width={42}
       height={42}
       className="w-10 h-10 md:w-[52px] md:h-[52px] drop-shadow-[0_0_20px_rgba(59,130,246,0.3)] opacity-90"
@@ -124,7 +124,7 @@ const FloatingCards = () => {
       <GlassPlatform index={2} delay={0.3}>
           <Image
       src="/social.png"
-      alt="Wekraft Logo"
+      alt="WeKraft Logo"
       width={42}
       height={42}
       className="w-10 h-10 md:w-[52px] md:h-[52px] drop-shadow-[0_0_20px_rgba(59,130,246,0.3)] opacity-90"
@@ -140,7 +140,7 @@ const features = [
   {
     title: "Where change happens",
     description:
-      "Teams that adopt Wekraft ship more code with smaller PRs and faster review cycles.",
+      "Teams that adopt WeKraft ship more code with smaller PRs and faster review cycles.",
   },
   {
     title: "Synced with GitHub",
@@ -150,7 +150,7 @@ const features = [
   {
     title: "Built on top of Git",
     description:
-      "Wekraft is integrated with all your git scripts, aliases, and workflows.",
+      "WeKraft is integrated with all your git scripts, aliases, and workflows.",
   },
 ];
 
@@ -169,7 +169,7 @@ const Section5 = () => {
         >
           <Image
             src="/logo.svg"
-            alt="Wekraft Logo"
+            alt="WeKraft Logo"
             width={45}
             height={45}
             className="drop-shadow-[0_0_20px_rgba(59,130,246,0.3)]"
@@ -195,7 +195,7 @@ const Section5 = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-gray-500 text-lg mt-5 font-sans max-w-lg mx-auto tracking-tight"
         >
-          Wekraft works seamlessly with the technologies you already use
+          WeKraft works seamlessly with the technologies you already use
         </motion.p>
       </div>
 

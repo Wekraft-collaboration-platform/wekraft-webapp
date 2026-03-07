@@ -3,7 +3,7 @@ import Pricing from "@/modules/web/Pricing";
 import Footer from "@/modules/web/Footer";
 
 export const metadata = {
-  title: "Pricing — Wekraft",
+  title: "Pricing — WeKraft",
   description:
     "Simple, transparent pricing for every kind of team. From solo devs to scaling studios.",
 };
