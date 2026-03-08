@@ -46,7 +46,7 @@ export async function POST(req: NextRequest) {
                 You're on the list. 🎉
               </p>
               <p style="margin:0 0 24px;font-size:14px;color:#a1a1aa;line-height:1.7;">
-                Hey there — thanks for joining the WeKraft waitlist. You're among the first to know when we launch.
+                Hey there ROX ! this side — thanks for joining the WeKraft waitlist. You're among the first to know when we launch.
               </p>
 
               <p style="margin:0 0 10px;font-size:14px;color:#d4d4d8;line-height:1.7;">
@@ -101,10 +101,10 @@ export async function POST(req: NextRequest) {
           <tr>
             <td style="padding:24px 40px;border-top:1px solid #27272a;text-align:center;">
               <p style="margin:0 0 6px;font-size:12px;color:#52525b;">
-                You're receiving this because you signed up at wekraft.xyz
+                Team ROX is behind this development. 
               </p>
               <p style="margin:0;font-size:12px;color:#3f3f46;">
-                © ${new Date().getFullYear()} WeKraft · hello@wekraft.xyz
+                © ${new Date().getFullYear()} WeKraft · team@wekraft.xyz
               </p>
             </td>
           </tr>
