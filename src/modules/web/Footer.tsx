@@ -34,7 +34,7 @@ const Footer = () => {
       await saveEmail({ email: trimmed });
 
       // API route (fire & forget)
-      fetch("//waitlist", {
+      fetch("/api/waitlist", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: trimmed }),

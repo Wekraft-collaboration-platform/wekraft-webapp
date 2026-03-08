@@ -127,7 +127,7 @@ const Hero = () => {
 
       // API route (fire & forget)
       // api/waitlist
-      fetch("//waitlist", {
+      fetch("/api/waitlist", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: trimmed }),
