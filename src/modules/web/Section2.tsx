@@ -125,12 +125,12 @@ const Section2 = () => {
             <Sparkles className="w-3 h-3" />
             <span>Autonomous Agents</span>
           </motion.div>
-          <h1 className="text-4xl text-center mx-auto  font-light tracking-tight leading-tight max-w-2xl text-gray-300 font-pop">
+          <h2 className="text-4xl text-center mx-auto  font-light tracking-tight leading-tight max-w-2xl text-gray-300 font-pop">
             <span className="text-blue-500 font-sans font-semibold">
               Your AI assistant
             </span>{" "}
             for faster executions. Agents think, plan, and execute with you.
-          </h1>
+          </h2>
         </header>
 
         <main className="relative w-full py-16 md:py-24 mx-auto">

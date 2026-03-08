@@ -113,7 +113,7 @@ const FloatingCards = () => {
       <GlassPlatform index={1} delay={0.15}>
       <Image
       src="/github.png"
-      alt="Wekraft Logo"
+      alt="GitHub Integration"
       width={42}
       height={42}
       className="w-10 h-10 md:w-[52px] md:h-[52px] drop-shadow-[0_0_20px_rgba(59,130,246,0.3)] opacity-90"
@@ -124,7 +124,7 @@ const FloatingCards = () => {
       <GlassPlatform index={2} delay={0.3}>
           <Image
       src="/social.png"
-      alt="Wekraft Logo"
+      alt="Developer Social Network"
       width={42}
       height={42}
       className="w-10 h-10 md:w-[52px] md:h-[52px] drop-shadow-[0_0_20px_rgba(59,130,246,0.3)] opacity-90"

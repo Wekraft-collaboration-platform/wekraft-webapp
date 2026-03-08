@@ -160,9 +160,9 @@ const Hero = () => {
         <Image
           src="/night-hero.png"
           alt="background"
-          className="size-full block object-cover opacity-70"
-          width="3276"
-          height="4095"
+          fill
+          sizes="100vw"
+          className="object-cover opacity-70"
           priority
         />
         <div className="absolute inset-0 bg-linear-to-b from-transparent via-black/20 to-black/75" />

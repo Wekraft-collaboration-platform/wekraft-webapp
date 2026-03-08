@@ -13,32 +13,32 @@ const team = [
     name: "Rox",
     role: "Founding Engineer & Vision",
     image: "/rox.png",
-    linkedin: "/https://www.linkedin.com/in/rox-aa53a1300/",
-    github: "/https://github.com/ronitrai27", 
+    linkedin: "https://www.linkedin.com/in/rox-aa53a1300/",
+    github: "https://github.com/ronitrai27",
     bio: "Driving the core architecture and ensuring every line of code meets the WeKraft craft standard.",
   },
   {
     name: "Ritesh",
     role: "Founding Engineer & Strategy",
     image: "/ritesh.jpeg",
-    linkedin: "ritesh-linkedin", // Placeholder
-    github: "ritesh-github", // Placeholder
+    linkedin: "#", // TODO: Add Ritesh's LinkedIn
+    github: "#", // TODO: Add Ritesh's GitHub
     bio: "Building the next-gen collaboration layers and leading the technical roadmap of the platform.",
   },
   {
     name: "Sahil",
     role: "Mobile App Developer",
-    image: "/sahil.jpeg", 
-    linkedin: "/https://www.linkedin.com/in/sahil-80573b388", // Placeholder
-    github: "/https://github.com/Sleepy-07", // Placeholder
+    image: "/sahil.jpeg",
+    linkedin: "https://www.linkedin.com/in/sahil-80573b388",
+    github: "https://github.com/Sleepy-07",
     bio: "Obsessed with user experience and seamless workflows that make collaboration feel like magic.",
   },
   {
     name: "Bhanu Pratap",
     role: "Co-Founding Engineer",
     image: "/bhanu.jpeg",
-    linkedin: "bhanu-linkedin", // Placeholder
-    github: "bhanu-github", // Placeholder
+    linkedin: "#", // TODO: Add Bhanu's LinkedIn
+    github: "#", // TODO: Add Bhanu's GitHub
     bio: "Powering the intelligent agents and cross-stack integrations that keep development moving.",
   },
 ];
@@ -138,20 +138,27 @@ const AboutUs = () => {
 
                 {/* Socials */}
                 <div className="flex items-center gap-4 mt-auto">
-                  <Link
-                    href={`https://github.com/${member.github}`}
+                  <a
+                    href={member.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${member.name}'s GitHub`}
                     className="p-2 rounded-lg bg-white/5 border border-white/10 hover:bg-white hover:text-black transition-all"
                   >
                     <Github className="w-4 h-4" />
-                  </Link>
-                  <Link
-                    href={`https://linkedin.com/in/${member.linkedin}`}
+                  </a>
+                  <a
+                    href={member.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${member.name}'s LinkedIn`}
                     className="p-2 rounded-lg bg-white/5 border border-white/10 hover:bg-white hover:text-black transition-all"
                   >
                     <Linkedin className="w-4 h-4" />
-                  </Link>
+                  </a>
                   <Link
-                    href="#"
+                    href="/reach-us"
+                    aria-label={`Contact ${member.name}`}
                     className="p-2 rounded-lg bg-white/5 border border-white/10 hover:bg-white hover:text-black transition-all"
                   >
                     <Mail className="w-4 h-4" />

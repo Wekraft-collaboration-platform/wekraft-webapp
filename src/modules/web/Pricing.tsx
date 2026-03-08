@@ -514,7 +514,7 @@ const Pricing = () => {
           <p className="text-gray-400 text-sm font-normal">
             Can&apos;t find your answer?{" "}
             <a
-              href="mailto:contact@wekraft.com"
+              href="mailto:contact@wekraft.xyz"
               className="text-white hover:text-gray-300 transition-colors underline underline-offset-4"
             >
               Ask us directly

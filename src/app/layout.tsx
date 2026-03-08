@@ -47,7 +47,7 @@ export const metadata: Metadata = {
       "AI-powered project management for modern builders. Find your crew, plan smarter, and ship faster with WeKraft.",
     images: [
       {
-        url: "/og-image.png",
+        url: "/og-image.jpeg",
         width: 1200,
         height: 630,
         alt: "WeKraft — Build Together, Craft Faster",
@@ -84,9 +84,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <link rel="canonical" href="https://wekraft.xyz" />
-      </head>
+      <head />
 
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}

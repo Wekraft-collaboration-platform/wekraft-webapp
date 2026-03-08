@@ -142,36 +142,47 @@ const Footer = () => {
         </div>
 
         <div className="flex items-center flex-wrap text-neutral-200 justify-center gap-x-8 gap-y-4 md:gap-y-0">
-          <Link
-            href="/https://x.com/wekraftt?s=21"
+          <a
+            href="https://x.com/wekraftt?s=21"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="X (formerly Twitter)"
             className="hover:text-white transition-colors flex items-center gap-2"
           >
             <Image src={"/twitter.png"} alt="x" width={26} height={26} />
-          </Link>
-          <Link
-            href="/https://discord.gg/zUXum4Z8"
+          </a>
+          <a
+            href="https://discord.gg/zUXum4Z8"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Discord"
             className="hover:text-white transition-colors flex items-center gap-2"
           >
             <Image src={"/discord.png"} alt="discord" width={26} height={26} />
-          </Link>
-          <Link
-            href="/https://www.instagram.com/wekraft.xyz"
+          </a>
+          <a
+            href="https://www.instagram.com/wekraft.xyz"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
             className="hover:text-white transition-colors flex items-center gap-2"
           >
             <Image src={"/instagram.png"} alt="insta" width={26} height={26} />
-          </Link>
+          </a>
           <Link
             href="/reach-us"
             className="hover:text-white transition-colors flex items-center gap-2"
           >
             <Mail className="w-5 h-5" />
           </Link>
-          <Link
+          <a
             href="https://github.com/Wekraft-collaboration-platform"
+            target="_blank"
+            rel="noopener noreferrer"
             className="hover:text-white transition-colors flex items-center gap-2"
           >
             <Github className="w-4 h-4" /> Star on GitHub
-          </Link>
+          </a>
           <Link
             href="/about-us"
             className="hover:text-white transition-colors flex items-center gap-2 text-white p-2 bg-blue-500/70 rounded-lg"
