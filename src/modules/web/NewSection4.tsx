@@ -203,7 +203,7 @@ const TimelineTrackingUI = () => {
                   key={i}
                   className={cn(
                     "flex-1 border-l",
-                    i === TODAY_COL ? "border-blue-500/40" : "border-white/[0.04]"
+                    i === TODAY_COL ? "border-white/[0.04]" : "border-white/[0.04]"
                   )}
                 />
               ))}

@@ -42,51 +42,59 @@ const GlassPlatform = ({
           className="relative w-[180px] h-[150px] md:w-[220px] md:h-[190px]"
           style={{
             perspective: "1200px",
+            transformStyle: "preserve-3d",
           }}
         >
           <div
             style={{
               position: "absolute",
               inset: 0,
-              background:
-                "linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 40%, rgba(255,255,255,0.01) 100%)",
-              border: "1px solid rgba(255,255,255,0.2)",
-              borderRadius: "12px",
-              transform:
-                "rotateX(58deg) rotateZ(-45deg) scale(1)",
-              transformOrigin: "center center",
-              boxShadow:
-                "0 40px 80px -15px rgba(0,0,0,0.7), 0 12px 30px rgba(0,0,0,0.4), inset 0 1.5px 0 rgba(255,255,255,0.2), inset 0 -1px 0 rgba(255,255,255,0.1)",
-              backdropFilter: "blur(12px)",
+              transformStyle: "preserve-3d",
+              transform: "rotateX(58deg) rotateZ(-45deg)",
             }}
           >
-            {/* Top edge highlight */}
+
             <div
               style={{
                 position: "absolute",
-                top: 0,
-                left: "10%",
-                right: "10%",
-                height: "1px",
+                inset: 0,
                 background:
-                  "linear-gradient(to right, transparent, rgba(255,255,255,0.4), transparent)",
+                  "linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 40%, rgba(255,255,255,0.01) 100%)",
+                border: "1px solid rgba(255,255,255,0.2)",
+                borderRadius: "12px",
+                boxShadow:
+                  "0 40px 80px -15px rgba(0,0,0,0.7), 0 12px 30px rgba(0,0,0,0.4), inset 0 1.5px 0 rgba(255,255,255,0.2), inset 0 -1px 0 rgba(255,255,255,0.1)",
+                backdropFilter: "blur(12px)",
               }}
-            />
-          </div>
+            >
+              {/* Top edge highlight */}
+              <div
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: "10%",
+                  right: "10%",
+                  height: "1px",
+                  background:
+                    "linear-gradient(to right, transparent, rgba(255,255,255,0.4), transparent)",
+                }}
+              />
+            </div>
 
-          {/* Icon floating above the platform */}
-          <div
-            style={{
-              position: "absolute",
-              inset: 0,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
+            {/* Icon floating above the platform */}
+            <div
+              style={{
+                position: "absolute",
+                inset: 0,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
               transform: "translateY(-0px)",
-              zIndex: 1,
-            }}
-          >
-            {children}
+                zIndex: 1,
+              }}
+            >
+              {children}
+            </div>
           </div>
         </div>
       </motion.div>
@@ -103,9 +111,9 @@ const FloatingCards = () => {
       <Image
       src="/logo.svg"
       alt="Wekraft Logo"
-      width={42}
-      height={42}
-      className="w-10 h-10 md:w-[52px] md:h-[52px] drop-shadow-[0_0_20px_rgba(59,130,246,0.3)] opacity-90"
+      width={72}
+      height={72}
+      className="w-14 h-14 md:w-[80px] md:h-[80px] drop-shadow-[0_0_20px_rgba(59,130,246,0.3)] opacity-90"
       />
       </GlassPlatform>
 
@@ -114,9 +122,9 @@ const FloatingCards = () => {
       <Image
       src="/github.png"
       alt="GitHub Integration"
-      width={42}
-      height={42}
-      className="w-10 h-10 md:w-[52px] md:h-[52px] drop-shadow-[0_0_20px_rgba(59,130,246,0.3)] opacity-90"
+      width={72}
+      height={72}
+      className="w-14 h-14 md:w-[80px] md:h-[80px] drop-shadow-[0_0_20px_rgba(59,130,246,0.3)] opacity-90"
       />
       </GlassPlatform>
 
@@ -125,9 +133,9 @@ const FloatingCards = () => {
           <Image
       src="/social.png"
       alt="Developer Social Network"
-      width={42}
-      height={42}
-      className="w-10 h-10 md:w-[52px] md:h-[52px] drop-shadow-[0_0_20px_rgba(59,130,246,0.3)] opacity-90"
+      width={72}
+      height={72}
+      className="w-14 h-14 rotate-45 md:w-[80px] md:h-[80px] drop-shadow-[0_0_20px_rgba(59,130,246,0.3)] opacity-90"
       />
       </GlassPlatform>
     </div>
@@ -161,7 +169,7 @@ const Section5 = () => {
       {/* ── Header ── */}
       <div className="relative z-10 text-center mb-24 px-6">
          <motion.div
-            className="inline-flex items-center gap-2 px-5 py-1 rounded-full border border-white/10 bg-blue-500/10 text-[13px] text-neutral-400 font-medium mb-6"
+            className="inline-flex items-center gap-2 px-7 py-1 rounded-full border border-white/10 bg-blue-500/10 text-[13px] text-neutral-400 font-medium mb-6"
           >
             <div className="w-1.5 h-1.5 rounded-full bg-blue-500" />
             Infra you need

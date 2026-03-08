@@ -420,7 +420,7 @@ const Pricing = () => {
           <p className="text-[10px] font-bold uppercase tracking-widest text-[#A0A5B5] mb-3">
             Compare Plans
           </p>
-          <h2 className="text-2xl md:text-3xl font-semibold text-white tracking-tight">
+          <h2 className="text-2xl md:text-3xl font-semibold text-white tracking-tight mb-20">
             Everything, side by side
           </h2>
         </motion.div>

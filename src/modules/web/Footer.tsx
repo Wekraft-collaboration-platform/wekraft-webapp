@@ -184,7 +184,7 @@ const Footer = () => {
             <Github className="w-4 h-4" /> Star on GitHub
           </a>
           <Link
-            href="/about-us"
+            href="/about-us#about-us-top"
             className="hover:text-white transition-colors flex items-center gap-2 text-white p-2 bg-blue-500/70 rounded-lg"
           >
             <Heart className="w-4 h-4" /> Support Creator

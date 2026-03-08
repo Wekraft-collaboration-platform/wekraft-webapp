@@ -21,8 +21,8 @@ const team = [
     name: "Ritesh",
     role: "Founding Engineer & Strategy",
     image: "/ritesh.jpeg",
-    linkedin: "#", // TODO: Add Ritesh's LinkedIn
-    github: "#", // TODO: Add Ritesh's GitHub
+    linkedin: "https://www.linkedin.com/in/ritesh-sinha-rk/", 
+    github: "https://github.com/ritesh-sinha29",
     bio: "Building the next-gen collaboration layers and leading the technical roadmap of the platform.",
   },
   {
@@ -37,15 +37,15 @@ const team = [
     name: "Bhanu Pratap",
     role: "Co-Founding Engineer",
     image: "/bhanu.jpeg",
-    linkedin: "#", // TODO: Add Bhanu's LinkedIn
-    github: "#", // TODO: Add Bhanu's GitHub
+    linkedin: "https://www.linkedin.com/in/bhanu-partap13",
+    github: "https://www.github.com/Bhanu-partap-13",
     bio: "Powering the intelligent agents and cross-stack integrations that keep development moving.",
   },
 ];
 
 const AboutUs = () => {
   return (
-    <div className="bg-black min-h-screen text-white selection:bg-blue-500/30 font-sans antialiased">
+    <div id="about-us-top" className="bg-black min-h-screen text-white selection:bg-blue-500/30 font-sans antialiased">
       <Navbar />
 
       {/* Hero Section */}
@@ -106,7 +106,7 @@ const AboutUs = () => {
                 key={member.name}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                whileHover={{ y: -10 }}
+                whileHover={{ y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
                 className="group relative bg-[#0a0a0a] border border-white/10 rounded-[32px] overflow-hidden transition-all duration-300 hover:border-blue-500/50 hover:shadow-[0_0_30px_rgba(59,130,246,0.15)] flex flex-col items-center p-8"
