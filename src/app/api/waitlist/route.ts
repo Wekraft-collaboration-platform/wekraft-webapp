@@ -3,22 +3,23 @@ import { sendEmail } from "@/lib/resend";
 
 export async function POST(req: NextRequest) {
   try {
-  const body = await req.json();
-  const email = body.email;
+   const body = await req.json();
+   const email = body.email;
 
-  console.log('[Waitlist API] Received request:', { email, hasEmail: !!email });
+   console.log('[Waitlist API] Received request:', { email, hasEmail: !!email });
 
-  if (!email || typeof email !== "string") {
-    console.error('[Waitlist API] Invalid email:', email);
+    if (!email || typeof email !== "string") {
+     console.error('[Waitlist API] Invalid email:', email);
       return NextResponse.json({ error: "Invalid email" }, { status: 400 });
     }
 
-  console.log('[Waitlist API] Sending email to:', email);
+   console.log('[Waitlist API] Sending email to:', email);
     
-    await sendEmail({
-      to: email,
-      subject: "You're on the WeKraft waitlist!",
-      html: `
+    try {
+     const emailResult = await sendEmail({
+        to: email,
+        subject: "You're on the WeKraft waitlist!",
+        html: `
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -124,10 +125,19 @@ export async function POST(req: NextRequest) {
 </html>
       `,
     });
-
-    return NextResponse.json({ success: true });
+      
+     console.log('[Waitlist API] Email sent successfully:', { email, result: emailResult });
+      return NextResponse.json({ success: true, message: "Email sent successfully" });
+    } catch (emailError) {
+     console.error('[Waitlist API] Email sending failed:', emailError);
+      throw emailError;
+    }
   } catch (error) {
-    console.error("[waitlist/send-email]", error);
-    return NextResponse.json({ error: "Failed to send email" }, { status: 500 });
+   console.error("[waitlist/send-email]", error);
+   const errorMessage = error instanceof Error ? error.message : 'Failed to send email';
+    return NextResponse.json({ 
+      error: "Failed to send email", 
+      details: errorMessage 
+    }, { status: 500 });
   }
 }
