@@ -1,11 +1,14 @@
-import Footer from "@/modules/web/Footer";
-import NewSection4 from "@/modules/web/NewSection4";
-import Section1 from "@/modules/web/Section1";
-import Section2 from "@/modules/web/Section2";
-import Section3 from "@/modules/web/Section3";
-import Section5 from "@/modules/web/Section5";
-import Hero from "@/modules/web/hero";
 import Navbar from "@/modules/web/navbar";
+import Hero from "@/modules/web/hero";
+import dynamic from "next/dynamic";
+
+// Dynamically importing components----------
+const Section1 = dynamic(() => import("@/modules/web/Section1"));
+const Section2 = dynamic(() => import("@/modules/web/Section2"));
+const Section3 = dynamic(() => import("@/modules/web/Section3"));
+const NewSection4 = dynamic(() => import("@/modules/web/NewSection4"));
+const Section5 = dynamic(() => import("@/modules/web/Section5"));
+const Footer = dynamic(() => import("@/modules/web/Footer"));
 
 const Home = () => {
   return (

@@ -7,20 +7,10 @@ import {
   useTransform,
   useSpring,
 } from "framer-motion";
-import { AnimatedShinyText } from "@/components/ui/animated-shiny-text";
-import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
 import { Spotlight } from "@/components/ui/spotlight";
-import {
-  ArrowRightIcon,
-  LaptopMinimalCheck,
-  LucideRocket,
-  LucideTrendingUp,
-  MousePointerBan,
-} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { LaptopMinimalCheck, MousePointerBan } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
-import { HeroVideoDialog } from "@/components/ui/hero-video-dialog";
 import { Input } from "@/components/ui/input";
 import { useMutation } from "convex/react";
 import { api } from "../../../convex/_generated/api";
